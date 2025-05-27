@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -35,7 +36,6 @@ body {
   position: relative;
   padding: 3px 5px 5px 5px;
 }
-
 
 
 @-moz-keyframes growdown {
@@ -87,31 +87,526 @@ body {
   width: 100%;
   height: 100%;
   z-index: 999;
+  padding: 5px;
   display: grid;
   min-width: 300px;
   position: absolute;
   grid-template-rows: 1fr;
-  padding: 3px 5px 5px 5px;
+  display: rnone;
 }
 .md {
   width: 100%;
+  padding: 5px;
   display: grid;
   position: relative;
+  padding-top: calc(1% + 100px);
+  background-color: #0000004d;
+}
+.forms {
+  width: 100%;
+  display: grid;
+  margin: 0 auto;
+  max-width: 560px;
+  min-width: 300px;
+  border-radius: 3px;
+  height: fit-content;
+  background-size: cover;
+  background-repeat: no-repeat;
+  grid-template-rows: 50px minmax(500px, 1fr);
+  background-color: #c1e3ff;
+  background-image: url("https://judadeveloper.github.io/registration/banner-2.png");
+  box-shadow: #00000059 0px 5px 15px;
+  display: ynone;
+}
+.heada {
+  width: 100%;
+  max-height: 50px;
+  display: grid;
+  align-items: center;
+  position: relative;
+  padding: 0px 15px;
+  grid-template-columns: 100px 1fr;
+  border-radius: 4px 4px 0px 0px;
+}
+.heada img {
+  width: 100px;
+}
+.heada .btnclose {
+  top: 3px;
+  right: 3px;
+  width: 23px;
+  height: 23px;
+  fill: #919191;
+  position: absolute;
+  border-radius: 100%;
+}
+.btnclose:hover {
+  scale: 110%;
+  fill: #ff0000;
+}
+
+form {
+  min-height: 500px;
+  max-height: 600px;
+  padding-bottom: calc(100% - 500px);
+  background-color: #00000021;
+  }
+  
+.forms:has(form.shown) {
+  display: grid;
+}
+form.shown {
+  display: grid;
+}
+
+table.client {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse ;
+}
+.client  th {
+  font-size: 16px;
+  color: #111111;
+  font-weight: 600;
+  text-align: center;
+  padding: 5%  0%;
+}
+.client .tab {
+  display: none;
+}
+.client .tab.shown {
+  display: grid;
+}
+.client .tab td {
+  display: grid;
+}
+.client .tab h6{
+  width: 100%;
+  font-size: 11px;
+  max-width: 300px;
+  padding: 2px 3px;
+  margin: 5px auto;
+  margin-top: 10px;
+  color: #030303;
+}
+
+.lbl {
+  width: 100%;
+  height: 50px;
+  padding: 0px;
+  display: grid;
+  margin: 0px auto;
+  max-width: 300px;
+  position: relative;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  grid-template-columns: minmax(50px, 20%) 1fr;
+}
+.lbl.txtb  {
+  display: grid;
+  min-height: 80px;
+}
+.conts {
+  display: grid;
+  column-gap: 5%;
+  position: relative;
+  border-radius: 0px 3px 3px 0px;
+  grid-template-columns: 1fr;
+
+}
+.incon {
+  height: 100%;
+  display: grid;
+  background-color: #abc7db44;
+  border-radius: 4px 0px 0px 4px;
+  border-right: 1px solid #97aab844;
+}
+.incon svg {
+  width: 35%;
+  height: 35%;
+  margin: auto;
+  fill: #01428d;
+  fill: #797b7c;
+  transform: scaleX(1);
+  transition: all 0.3s ease;
+}
+.pod {
+  font-size: 14px;
+  color: #5c5c5c;
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
+  transform: translate3d(0, 0, 0);
+}
+.txt .pod, 
+.drod .pod {
+  top: 13px;
+  left: 8%;
+}
+.txtb .pod {
+  top: 25px;
+  left: 8%;
+}
+.dob .pod, 
+.cbox .pod {
+  top: 3px;
+  font-size: 11px;
+  pointer-events: none;
+}
+.nput {
+  height: 100%;
+  padding: 20px 5px 5px 20px;
+  background-color: #ffffff00;
+  border-radius: 0px 3px 3px 0px;
+}
+.dob .nput, 
+.cbox .nput {
+  width: 0px;
+  height: 14px;
+  padding: 0;
+  font-size: 8px;
+  opacity: 0;
+  position: absolute;
+  background-color: #00000000;
+}
+
+.imge {
+  padding: 10px;
+  width: fit-content;
+  height: fit-content;
   align-content: center;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  background-color: #00000013;
+}
+.imge .conts{
+  cursor: pointer;
+  min-width: 140px;
+  max-width: 180px;
+  min-height: 150px;
+  margin: 0px auto;
+  width: max-content;
+  height: max-content;
+  justify-items: center;
+  border-radius: 10px;
   background-color: #ffffff;
 }
+.imge img {
+  margin: auto;
+  width: 165px;
+  min-width: 140px;
+  min-height: 150px;
+  max-height: 180px;
+  border-radius: 8px;
+}
+.imge img[src=""] {
+  width: 60px;
+  height: 60px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 100%;
+  background-color: #24a8ff;
+  content: url("https://judadeveloper.github.io/registration/user2.svg");
+}
+.imge .nput {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+}
+.imge .pod {
+  top: 110%;
+  width: 95%;
+  height: 28px;
+  padding: 5px 5px;
+  text-align: center;
+  position: absolute;
+  border-radius: 3px;
+  background-color: #f3f3f3;
+}
+.imge .conts:hover {
+  background-color: #fcfcfcd0;
+  border: 1px solid #008cff8e;
+}
+.imge .conts:hover img {
+  scale: 105%;
+}
+
+.dob input[type="button"] {
+  height: 26px;
+  cursor: pointer;
+  margin-top: 18px;
+  border-radius: 2px;
+  background-color: #f3f3f39f;
+}
+.cbox label {
+  display: grid;
+  cursor: pointer;
+  font-size: 14px;
+  align-items: center;
+  padding: 15px 0px 5px 0px;
+  grid-template-columns: 25px 1fr;
+}
+.cbox input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.cbox .conts {
+  grid-template-columns: minmax(25px, 35%) 1fr;
+}
+.cbox:has(#w_status) .conts {
+  grid-template-columns: minmax(25px, 40%) 1fr;
+}
+.dob .conts {
+  grid-template-columns: minmax(25px, 25%) minmax(25px, 25%) minmax(25px, 25%);
+}
+
+
+.dropdwn {
+  top: 42px;
+  left: 60px;
+  z-index: 999;
+  display: none;
+  min-height: 50px;
+  max-width: 230px;
+  overflow-y: auto;
+  max-height: 150px;
+  position: absolute;
+  list-style-type: none;
+  width: calc(100% - 65px);
+  background-color: #fdfdfd;
+  border: 1px solid #b8b8b842;
+  transform-origin: top center;
+  animation: growdown 200ms ease-in-out forwards;
+  box-shadow: 0 26px 58px 0 #00000038, 0 5px 14px 0 #0000002e;
+}
+
+.dropdwn li {
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #1a1a1a;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+.dropdwn li p {
+  height: 40px;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  padding: 5px 10px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.dropdwn li:hover {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #008cff;
+}
+
+.lbl:hover .incon {
+  background-color: #008cff1a;
+}
+.lbl:hover .incon svg {
+  fill: #008cff;
+}
+.lbl:hover .pod {
+  color: #008cff;
+}
+.lbl:hover .incon {
+  border-right: 1px solid #008cff;
+}
+
+.lbl:focus-within {
+  background-color: #008cff;
+}
+.lbl:focus-within .incon svg {
+  fill: #ffffff;
+}
+.lbl:focus-within .incon {
+  border: none;
+  background-color: #ffffff38;
+}
+.txt:focus-within .pod,
+.drod:focus-within .pod {
+  color: #008cff;
+  transform: translate3d(0, -8px, 0) scale(0.78);
+}
+.txtb:focus-within .pod {
+  color: #008cff;
+  transform: translate3d(0, -20px, 0) scale(0.78);
+}
+.conts:has(.nput:focus) {
+  background-color: #ffffff;
+  border: 1px solid #008cff;
+}
+
+.cbox label:hover {
+  color: #008cff;
+  font-weight: bold;
+}
+input[type="button"]:hover,
+input[type="checkbox"]:hover {
+  color: #008cff;
+  font-weight: bold;
+}
+input[type="checkbox"]:checked {
+  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
+}
+
+
+.lbl:has(.nput.invalid) .conts {
+  border: 1px solid #ff686885;
+}
+.lbl:has(.nput.invalid:not([type=file])) .pod {
+  color: #f86464;
+}
+.lbl:has(.nput.invalid) .incon svg {
+  fill: #f86464;
+}
+.lbl:focus-within .nput:focus.invalid {
+  border: 1px solid #ffacaca6;
+}
+
+.imge:has(.nput.invalid) .conts img {
+  background-color: #ff9f9f;
+}
+
+input.invalid[type=button] {
+  color: #f86464;
+}
+
+
+
+.lbl:not(:focus-within):has(.nput:not(:placeholder-shown)) .incon {
+  background-color: #01a2ff17;
+}
+.lbl:not(:focus-within):has(.nput:not(:placeholder-shown)) .incon svg {
+  fill: #0099ff;
+}
+.lbl:not(:focus-within):has(.nput:not(:placeholder-shown)) .pod{
+  color: #757575;
+}
+.txt:not(:focus-within):has(.nput:not(:placeholder-shown)) .pod, 
+.drod:not(:focus-within):has(.nput:not(:placeholder-shown)) .pod {
+  transform: translate3d(0, -9px, 0) scale(0.78);
+}
+.txtb:not(:focus-within):has(.nput:not(:placeholder-shown)) .pod {
+  transform: translate3d(0, -20px, 0) scale(0.78);
+}
+.txt:not(:focus-within):has(.nput:not(:placeholder-shown)) .nput,
+.drod:not(:focus-within):has(.nput:not(:placeholder-shown)) .nput {
+  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
+}
+.lbl:not(:focus-within):has(.nput:not(:placeholder-shown):not([type=file])) .conts{
+  border: 1px solid #008cff70;
+}
+.bxd1:not(:hover)[value]:not([value="DD"]), 
+.bxd2:not(:hover)[value]:not([value="MM"]), 
+.bxd3:not(:hover)[value]:not([value="YY"]) {
+  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
+}
+
+
+
+
+.dox {
+  display: grid;
+  height: fit-content;
+}
+.dox h6 {
+  height: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: #106ebbe0;
+}
+.dox label {
+  width: 100%;
+  width: 100px;
+  height: 110px;
+  display: grid;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 3px;
+  text-align: center;
+  position: relative;
+  margin-bottom: 5%;
+  background-color: #d2e9fce0;
+}
+.dox label:has(img:not(img[src=""])) {
+  background-color: #f3f3f39c;
+}
+.dox span {
+  bottom: 0px;
+  width: 100%;
+  font-size: 11px;
+  font-weight: 400;
+  padding: 2px 5px;
+  position: absolute;
+  background-color: #f3f3f39c;
+}
+.dox input[type="file"] {
+  width: 0px;
+  height: 0px;
+  padding: 0;
+  opacity: 0;
+  position: absolute;
+}
+.dox label img {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  max-width: 96px;
+  max-height: 108px;
+  border-radius: 0px;
+}
+.dox label img[src=""] {
+  width: 50%;
+  min-width: 40px;
+  min-height: 40px;
+  content: url("https://judadeveloper.github.io/registration/card.svg");
+}
+.dox .nput {
+  opacity: 0;
+  font-size: 0px;
+  padding: 0;
+  height: 15px;
+  position: absolute;
+  background-color: #ffffff00;
+}
+.dox label:hover img {
+  scale: 110%;
+}
+.dox label:hover {
+  background-color: #9ed3ff8c;
+  border: 1px solid #008cff8e;
+}
+.dox label:hover span {
+  background-color: #f3f3f3e3;
+}
+
+
 .successfull {
   width: 100%;
   height: 100%;
   display: grid;
   z-index: 99999;
-  padding: 0px 10px 0px 10%;
   position: absolute;
   align-content: center;
   justify-content: center;
+  padding: 0px 10px 0px 10%;
   background-color: #f1f1f1;
   display: none;
-
 }
 .successfull img {
   top: 10%;
@@ -130,530 +625,83 @@ body {
 .modal.saved .successfull {
   display: grid;
 }
-.forms {
+
+
+
+
+.submit {
+  height: 60px;
+  justify-content: center;
+  background-color: #ffffff3b;
+  border-radius:  0px 0px 4px 4px;
+  padding: 5px calc((100% - 344px)/2);
+}
+.submit tr {
+  display: grid;
+  grid-template-columns: minmax(100px, 35%) 1fr;
+}
+.submit td {
   width: 100%;
-  display: grid;
-  margin: 0 auto;
-  max-width: 500px;
-  min-width: 260px;
-  border-radius: 5px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  grid-template-columns: minmax(320px, 1fr);
-  background-color: hwb(207 34% 8%);
-  background-image: url("https://judadeveloper.github.io/registration/banner-2.png");
-  grid-template-rows: 30px minmax(400px, 1fr) 70px;
-
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-  display: none;
+  text-align: center;
+  align-items: center;
 }
-.forms:has(form.shown) {
-  display: grid;
-}
-form.shown {
-  display: grid;
-}
-
-.heada {
+.submit td button {
+  height: 40px;
   width: 100%;
-  height: 30px;
-  display: grid;
-  align-items: end;
-  position: relative;
-  padding: 0px 5px 0px 5px;
-  grid-template-columns: 1fr;
-  border-radius: 8px 8px 0px 0px;
-}
-.heada p {
-  font-size: 20px;
-  color: #ffffff;
-  text-align: start;
-  font-weight: 500;
-  padding: 0px 5px;
-}
-.heada .btnclose {
-  top: 2px;
-  right: 2px;
-  width: 25px;
-  height: 25px;
-  fill: #ffffff;
-  position: absolute;
-  border-radius: 100%;
-  background-color: #ffffff00;
-  scale: 110%;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px -1px rgba(0, 0, 0, 0.1);
-    display: none;
-}
-.btnclose:hover {
-  fill: #ff0000;
-  background-color: #ffffff;
-}
-
-form {
-  display: grid;
-  padding: 0px 15px;
-  padding-bottom: 20px;
-  background-color: #00000000;
-  display: none;
-}
-
-table {
-  width: 100%;
-  min-height: 380px;
-  margin: 0px auto;
-  min-width: 280px;
-  max-width: 300px;
-  border-collapse: collapse;
-}
-td {
-  display: none;
-  align-content: start;
-}
-td .tabname {
-  font-weight: 500;
-  font-size: 16px;
-  color: #000000;
-  padding-bottom: 10px;
-}
-
-td.shown {
-  display: grid;
-}
-
-
-.lbl {
-  width: 100%;
-  height: 50px;
-  display: grid;
-  margin: 0px auto;
-  position: relative;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  background-color: #ffffff;
-  grid-template-columns: 50px 1fr;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-}
-.lbl:hover {
-  .con {
-    svg {
-      transform: scale(1.3);
-      fill: #008cff;
-    }
-  }
-  .pod {
-    color: #008cff;
-  }
-}
-
-.con {
-  height: 100%;
-  display: flex;
-  background-color: #f8f8f8;
-  border-radius: 6px 0px 0px 6px;
-}
-.con svg {
-  width: 18x;
-  height: 18px;
-  margin: auto;
-  fill: #999999;
-  transform: scaleX(1);
-  transition: all 0.3s ease;
-}
-
-.pod {
-  top: 13px;
-  left: 65px;
-  font-size: 14px;
-  color: #7a7a7a;
-  position: absolute;
-  transform-origin: 0 0;
-  transform: translate3d(0, 0, 0);
-  transition: all 0.2s ease;
-  pointer-events: none;
-}
-
-.nput {
-  height: 100%;
-  padding: 20px 5px 5px 20px;
-  background-color: #ffffff00;
+  color: #242424;
+  font-weight: 600;
   border-radius: 4px;
 }
-.nput.url {
-  height: 0px;
+.submit td:first-of-type {
+  padding-right: 20%;
+  text-align: start;
+}
+.submit td:last-of-type {
+  padding-left: 35%;
+  text-align: end;
+}
+.submit td:first-of-type button {
   opacity: 0;
-  padding: 0;
+  max-width: 80px;
+}
+.submit td:last-of-type button {
+  max-width: 120px;
+}
+.submit td:first-of-type button:hover {
+  color: #ff0000;
+  background-color: #ffceceaf;
+}
+.submit td:first-of-type button.shown {
+  opacity: 1;
+  pointer-events: visible;
+}
+.submit td:last-of-type button:hover {
+  color: #ffffff;
+  font-weight: 500;
+  background-color: #008cff;
 }
 
-.lbl.txt.b {
-  height: fit-content;
-  .nput {
-    height: 80px;
-  }
-}
-.lbl.cbox, .lbl.dob {
-  grid-template-columns: 50px 1fr;
-}
-.lbl.cbox input[type="button"], 
-.lbl.dob input[type="button"] {
-  height: 25px;
-  cursor: pointer;
-  margin-top: 15px;
-  border-radius: 2px;
-  background-color: #f3f3f39f;
-}
-.lbl.cbox:hover, .lbl.dob:hover {
-  color: #008cff;
-  font-weight: bold;
-}
 
-.lbl.cbox span, .lbl.dob span {
+
+.cbox, .dob {
+  display: grid;
+  grid-template-rows: 1fr;
+  position: relative;
+}
+.cbox span, .dob span {
   top: 0px;
-  left: 65px;
+  left: 15px;
   font-size: 12px;
   color: #999999;
   position: absolute;
   pointer-events: none;
 }
-.lbl.cbox input[type="text"], .lbl.dob input[type="text"] {
+.cbox input[type="text"], 
+.dob input[type="text"] {
   padding: 0;
-  font-size: 0px;
+  font-size: 20px;
   pointer-events: none;
+  color: #000000;
   background-color: #ffffff00;
 }
-.box {
-  top: 0px;
-  left: 50px;
-  display: grid;
-  height: 100%;
-  column-gap: 5%;
-  padding-left: 15px;
-  position: absolute;
-  width: calc(100% - 52px);
-}
-.box label {
-  display: grid;
-  cursor: pointer;
-  font-size: 14px;
-  margin-top: 10px;
-  padding-bottom: 5px;
-  align-items: center;
-  padding: 5px 0px 0px 0px;
-  grid-template-columns: 25px 1fr;
-}
-.box label input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
-  cursor: pointer;
-}
-.box label:hover {
-  color: #008cff;
-  font-weight: bold;
-}
 
-.lbl.docs {
-  display: grid;
-  height: 100%;
-  padding: 0px 0px;
-  grid-template-columns: 1fr;
-  background-color: #ffffff42;
-  box-shadow: none;
-}
-.docs div {
-  display: grid;
-  height: 100%;
-  grid-template-rows: 1fr 1fr 1fr;
-
-}
-.docs div label {
-  width: 100px;
-  height: 110px;
-  display: grid;
-  margin: 0 auto;
-  cursor: pointer;
-  border-radius: 3px;
-  text-align: center;
-  grid-template-rows: 1fr 18px;
-  background-color: #ffffff;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-}
-
-.docs div label span {
-  font-size: 12px;
-  font-weight: 400;
-  background-color: #cfcece3d;
-}
-.docs div label input[type="file"] {
-  width: 0px;
-  height: 0px;
-  padding: 0;
-  border: none;
-}
-
-.lbl .dropdwn {
-  top: 42px;
-  left: 60px;
-  z-index: 999;
-  display: none;
-  min-height: 50px;
-  max-width: 230px;
-  overflow-y: auto;
-  max-height: 150px;
-  position: absolute;
-  list-style-type: none;
-  width: calc(100% - 65px);
-  background-color: #fdfdfd;
-  border: 1px solid #b8b8b842;
-
-  transform-origin: top center;
-  animation: growdown 200ms ease-in-out forwards;
-  box-shadow: 0 26px 58px 0 #00000038, 0 5px 14px 0 #0000002e;
-}
-
-.lbl .dropdwn li {
-  width: 100%;
-  height: 40px;
-  cursor: pointer;
-  font-size: 15px;
-  color: #1a1a1a;
-  border-radius: 4px;
-  background-color: #ffffff;
-}
-.lbl .dropdwn li p {
-  height: 40px;
-  display: grid;
-  text-align: center;
-  align-items: center;
-  padding: 5px 10px;
-  border-bottom: 1px solid #eeeeee;
-}
-
-.lbl .dropdwn li:hover {
-  color: #ffffff;
-  font-weight: bold;
-  background-color: #008cff;
-}
-
-.lbl:has(.nput.invalid) .con svg {
-  fill: #f86464;
-}
-.lbl:has(.nput.invalid) .pod {
-  color: #f86464;
-}
-.lbl:has(.nput.invalid) .nput {
-  border: 1px solid #ff686885;
-}
-.cbox:has(.nput.invalid) span, .dob:has(.nput.invalid) span {
-  color: #f86464;
-}
-
-.lbl:focus-within .con {
-  background-color: #0099ff;
-}
-.lbl:focus-within .con svg {
-  fill: #ffffff;
-}
-.lbl:focus-within .pod {
-  color: #006cc4;
-  transform: translate3d(0, -8px, 0) scale(0.78);
-}
-.lbl:focus-within .nput:focus {
-  background-color: #ffffff;
-  border: 1px solid #008cffa6;
-}
-.lbl:focus-within .nput:focus.invalid {
-  border: 1px solid #ffacaca6;
-}
-form:has(.nput#imageurl.invalid) label.imge {
-  border: 1px solid #ff686869;
-}
-form:has(.nput#imageurl.invalid) label.imge img {
-  background-color: #ff9f9f;
-}
-
-.lbl:not(:focus-within):has(.nput:not(:placeholder-shown)) .con {
-  background-color: #01a2ff17;
-}
-.lbl:not(:focus-within):has(.nput:not(:placeholder-shown)) .con svg {
-  fill: #0099ff;
-}
-.lbl:not(:focus-within):has(.nput:not(:placeholder-shown)) .pod {
-  color: #757575;
-  transform: translate3d(0, -8px, 0) scale(0.78);
-}
-.lbl:not(:focus-within):has(.nput:not(:placeholder-shown)) .nput {
-  font-size: 14px;
-  color: #000000;
-  font-weight: bold;
-  border: 1px solid #008cff44;
-}
-.cbox:has(.nput:not(.nput:placeholder-shown)):not(.lbl:focus-within) .nput {
-  font-size: 0px;
-  color: #ffffff00;
-}
-.dob:has(.nput:not(.nput:placeholder-shown)):not(.lbl:focus-within) .nput {
-  font-size: 0px;
-  color: #ffffff00;
-}
-
-label.imge {
-  width: 100%;
-  display: grid;
-  cursor: pointer;
-  min-width: 140px;
-  max-width: 180px;
-  min-height: 150px;
-  margin: 10px auto;
-  position: relative;
-  width: max-content;
-  height: max-content;
-  border-radius: 11px;
-  background-color: #ffffff;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-}
-label.imge:hover {
-  background-color: #fcfcfcd0;
-  border: 1px solid #008cff8e;
-}
-label.imge:hover img#imgpreview {
-  scale: 110%;
-}
-
-label.imge p {
-  top: -45px;
-  left: -50%;
-  right: -50%;
-  font-size: 25px;
-  min-width: 100%;
-  font-weight: 600;
-  padding: 0px 10px;
-  position: absolute;
-  text-align: center;
-  color: #616161;
-}
-
-label.imge img {
-  margin: auto;
-  width: 165px;
-  min-width: 140px;
-  min-height: 150px;
-  max-height: 180px;
-  border-radius: 10px;
-}
-label.imge img[src=""] {
-  width: 60px;
-  height: 60px;
-  min-width: 40px;
-  min-height: 40px;
-  border-radius: 100%;
-  background-color: #24a8ff;
-  content: url("https://judadeveloper.github.io/registration/user2.svg");
-}
-.docs label.imge:nth-child(1) img[src=""], 
-.docs label.imge:nth-child(2) img[src=""], 
-.docs label.imge:nth-child(3) img[src=""] {
-  border-radius: 0;
-  background-color: transparent;
-  content: url("https://judadeveloper.github.io/registration/card.svg");
-}
-.docs label.imge:nth-child(1) img, 
-.docs label.imge:nth-child(2) img, 
-.docs label.imge:nth-child(3) img {
-  margin: auto;
-  min-width: 60px;
-  min-height: 80px;
-  max-height: 100px;
-  border-radius: 0px;
-}
-.docs label.imge:nth-child(1), 
-.docs label.imge:nth-child(2), 
-.docs label.imge:nth-child(3) {
-  margin: auto;
-  width: 80px;
-  max-width: 120px;
-  min-height: 100px;
-  max-height: 120px;
-  border-radius: 0px;
-
-}
-
-
-label.imge input {
-  width: 0;
-  height: 0;
-  position: absolute;
-}
-
-
-.lbl.cbox .box {
-  grid-template-columns: minmax(25px, 35%) 1fr;
-}
-.lbl.cbox .box label:has(input[type="checkbox"]:checked) {
-  font-size: 14px;
-  color: #000000;
-  font-weight: bold;
-}
-.lbl.cbox:has(#w_status) .box {
-  grid-template-columns: minmax(25px, 40%) 1fr;
-}
-
-.lbl.dob .box {
-  grid-template-columns: minmax(25px, 25%) minmax(25px, 25%) minmax(25px, 25%);
-}
-
-.lbl.dob .box .ndob:nth-child(1):not(.ndob:nth-child(1)[value="DD"]),
-.lbl.dob .box .ndob:nth-child(2):not(.ndob:nth-child(2)[value="MM"]),
-.lbl.dob .box .ndob:nth-child(3):not(.ndob:nth-child(3)[value="YY"]) {
-  font-size: 14px;
-  color: #000000;
-  font-weight: bold;
-}
-
-.submit {
-  display: grid;
-  column-gap: 10%;
-  min-width: 300px;
-  padding: 13px 20px;
-  justify-content: center;
-  background-color: #fdfdfdd3;
-  border-radius: 0px 0px 3px 3px;
-  grid-template-columns: minmax(80px, 25%) minmax(140px, 25%);
-}
-.submit button.btn {
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  border-radius: 4px;
-}
-.submit .btn:first-child {
-  width: 80px;
-  opacity: 0;
-  color: #222222;
-  pointer-events: none;
-  background-color: #fafafa;
-}
-.submit .btn:first-child:hover {
-  color: #ff0000;
-  scale: 110%;
-  background-color: #ff959573;
-}
-.submit .btn:first-child.shown {
-  opacity: 1;
-  pointer-events: visible;
-}
-.submit .btn:last-child {
-  max-width: 140px;
-  color: #ffffff;
-  background-color: #37a2ff;
-}
-.submit .btn:last-child:hover {
-  scale: 110%;
-  font-weight: 500;
-  background-color: #008cff;
-}
