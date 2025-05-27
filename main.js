@@ -65,26 +65,30 @@ db.collection("cc_userdata").where("cid", "!=", '')
 /*===================
   Client Form Inputs
 ---------------------*/
+/*===================
+  Client Form Inputs
+---------------------*/
+
 let firstname = document.getElementById("fname");
 let secondname = document.getElementById("sname");
 let lastname = document.getElementById("lname");
 let dobirth = document.getElementById("dateob");
 let gender = document.getElementById("genda");
 let marital = document.getElementById("marital");
-let imageurl = document.getElementById("imageurl");
+let pic = document.getElementById("imagefile");
 
 let idnum = document.getElementById("idnumber");
 let krapin = document.getElementById("krapin");
-let email = document.getElementById("emailinput");
+let email = document.getElementById("email");
 let mobno1 = document.getElementById("phonenum1");
-let mobno2 = document.getElementById("phonenum2");
+let mobno2 = document.getElementById("altvenumber");
 let mobno3 = document.getElementById("phonenum3");
 
 let county = document.getElementById("county");
 let currtown = document.getElementById("town");
 let subcounty = document.getElementById("subcounty");
 let sublocation = document.getElementById("sublocation");
-let physical_address = document.getElementById("physical_address");
+let physicaladdrss = document.getElementById("physicaladdrss");
 
 let w_status = document.getElementById("w_status");
 let w_name = document.getElementById("w_name");
@@ -98,24 +102,21 @@ let nok_town = document.getElementById("nok_town");
 let nok_area = document.getElementById("w_town");
 let nok_tel = document.getElementById("nok_contact");
 
-let imageurl1 = document.getElementById("imageurl1");
-let imageurl2 = document.getElementById("imageurl2");
-let imageurl3 = document.getElementById("imageurl3");
+let doc1 = document.getElementById("dox1");
+let doc2 = document.getElementById("dox2");
+let doc3 = document.getElementById("dox3");
 
-
-
-let current_tab = 0;  // Current Tab 
+let current_tab = 0; // Current Tab
 //let current_form = document.createElement("form"); // Current Form
 let current_form = document.getElementById("newclient"); // Current Form
 
-let allinputs = current_form.querySelectorAll(".lbl .nput");   //selects all text Inputs
-let dropdowninputs = current_form.querySelectorAll(".lbl.drod .nput");  //selects all dropdown Inputs
-let checkboxes = current_form.querySelectorAll(".lbl.cbox .nput");  //selects all checkbox Inputs
+let allinputs = current_form.querySelectorAll(".lbl .nput"); //selects all text Inputs
+let dropdowninputs = current_form.querySelectorAll(".lbl.drod .nput"); //selects all dropdown Inputs
+let checkboxes = current_form.querySelectorAll(".lbl.cbox .nput"); //selects all checkbox Inputs
 let current_input = document.createElement("input");
 
-let dropdownlists = current_form.querySelectorAll(".dropdwn");  //selects all droplists
-let currentdropList = document.createElement("ul");  //  gets current droplists
-
+let dropdownlists = current_form.querySelectorAll(".dropdwn"); //selects all droplists
+let currentdropList = document.createElement("ul"); //  gets current droplists
 
 /*====================
 	Get Years List
@@ -243,9 +244,28 @@ const getListdata = (list) => {
   } else if (list == "years") {
     x = getYears(new Date().getUTCFullYear());
   } else if (list == "counties") {
-    x = ["Mombasa", "Kilifi", "Kwale", "Taita Taveta", "Eldoret", "Nairobi", "Kisumu", "Siaya"];
+    x = [
+      "Mombasa",
+      "Kilifi",
+      "Kwale",
+      "Taita Taveta",
+      "Eldoret",
+      "Nairobi",
+      "Kisumu",
+      "Siaya",
+    ];
   } else if (list == "towns" || list == "w_towns" || list == "nok_towns") {
-    x = ["Mombasa", "Kilifi", "Kwale", "Ukunda","Wundanyi", "Voi", "Kisumu", "Nairobi", "Nakuru"];
+    x = [
+      "Mombasa",
+      "Kilifi",
+      "Kwale",
+      "Ukunda",
+      "Wundanyi",
+      "Voi",
+      "Kisumu",
+      "Nairobi",
+      "Nakuru",
+    ];
   } else if (list == "subcounties") {
     x = ["Changamwe", "Kisauni", "Bamburi", "Likoni", "Mvita", "Jomvu"];
   } else if (list == "sublocations") {
@@ -272,7 +292,6 @@ const getListdata = (list) => {
       "Debt clearance",
       "Education expenses",
     ];
-
   } else if (list == "relations") {
     x = [
       "Mother",
@@ -353,8 +372,6 @@ function newposition(input) {
   }
 }
 
-
-
 // Dropdown Lists
 function showHide(disp) {
   if (disp == "" || disp == "none") {
@@ -364,7 +381,8 @@ function showHide(disp) {
   }
 }
 
-allinputs.forEach((input) => {  // show dropdown lists
+allinputs.forEach((input) => {
+  // show dropdown lists
   input.addEventListener("click", function () {
     current_input = this;
     if (this.name) {
@@ -421,7 +439,8 @@ function fetchdates(dx, mx, yx) {
     months.value = monthlist[m];
     years.value = y;
   }
-}; fetchdates(days, months, years);
+}
+fetchdates(days, months, years);
 
 /*====================
  Dates Inputs Clicked
@@ -482,56 +501,48 @@ const setfullname = () => {
 /*=====================
   Image File Input
 -----------------------*/
-const resizeimage = (inputfile, myurl) => {
-  let mg = document.getElementById(inputfile).files[0];
-  let inputurl = document.getElementById(myurl);
+const resizeimage = (nput, preview) => {
+  let mg = nput.files[0];
+  if (mg) {
+    let reader = new FileReader();
+    reader.readAsDataURL(mg);
+    reader.name = mg.name;
+    reader.size = mg.size;
 
-  let reader = new FileReader();
-  reader.readAsDataURL(mg);
-  reader.name = mg.name;
-  reader.size = mg.size;
+    reader.onload = function (event) {
+      let img = new Image();
+      img.src = event.target.result;
+      img.name = event.target.name;
+      img.size = event.target.size;
 
-  reader.onload = function (event) {
-    let img = new Image();
-    img.src = event.target.result;
-    img.name = event.target.name;
-    img.size = event.target.size;
-
-    img.onload = function (el) {
-      let x = document.createElement("canvas");
-      let W = el.target.width;
-      let H = el.target.height;
-      if (H > W) {
-        x.height = 160;
-        x.width = Math.round((W * 160) / H);
-      } else if (W > H) {
-        x.width = 150;
-        x.height = Math.round((H * 150) / W);
-      } else {
-        x.width = 150;
-        x.height = 160;
-      }
-      let cx = x.getContext("2d");
-      cx.drawImage(el.target, 0, 0, x.width, x.height);
-      let srcEncoded = cx.canvas.toDataURL("image/png", 1);
-
-      inputurl.value = srcEncoded;
-      inputurl.dispatchEvent(new Event("input"));
-      inputurl.dispatchEvent(new Event("change"));
+      img.onload = function (el) {
+        let x = document.createElement("canvas");
+        let W = el.target.width;
+        let H = el.target.height;
+        if (H > W) {
+          x.height = 160;
+          x.width = Math.round((W * 160) / H);
+        } else if (W > H) {
+          x.width = 150;
+          x.height = Math.round((H * 150) / W);
+        } else {
+          x.width = 150;
+          x.height = 160;
+        }
+        let cx = x.getContext("2d");
+        cx.drawImage(el.target, 0, 0, x.width, x.height);
+        let srcEncoded = cx.canvas.toDataURL("image/png", 1);
+        nput.dataset.url = srcEncoded;
+        preview.src = nput.dataset.url;
+      };
     };
-  };
-};
-const imageurlChanged = (input, preview) => {
-  if (input.value) {
-    document.getElementById(preview).src = input.value;
   }
 };
 
-imageurlChanged(imageurl, '');
-imageurlChanged(imageurl1, "");
-imageurlChanged(imageurl2, "");
-imageurlChanged(imageurl3, "");
-
+resizeimage(pic, document.getElementById("prev0"));
+resizeimage(doc1, document.getElementById("prev1"));
+resizeimage(doc2, document.getElementById("prev2"));
+resizeimage(doc3, document.getElementById("prev3"));
 
 /*=====================
   Fetch Form Data
@@ -559,7 +570,7 @@ function newuserdata(cid) {
       currtown.value,
       subcounty.value,
       sublocation.value,
-      physical_address.value,
+      physicaladdrss.value,
     ],
     workstatus: [
       w_status.value,
@@ -575,8 +586,8 @@ function newuserdata(cid) {
       nok_area.value,
       nok_tel.value.toString(),
     ],
-    images: [imageurl.value],
-    docs: [imageurl1.value, imageurl2.value, imageurl3.value],
+    images: [pic.dataset.url],
+    docs: [doc1.dataset.url, doc2.dataset.url, doc3.dataset.url],
     regdate: new Date().toLocaleDateString(),
   };
   sessionStorage.setItem("cc_newuser", JSON.stringify(newdata));
@@ -585,16 +596,16 @@ function newuserdata(cid) {
 /*============================
    Work Status Changed
 ------------------------------*/
-let w1 = document.querySelector(".pod.wname");
-let w2 = document.querySelector(".pod.wtype");
-let w3 = document.querySelector(".pod.wtown");
-let w4 = document.querySelector(".pod.wcontact");
-let w5 = document.querySelector(".lbl.docs .w5");
+let w1 = document.querySelector(".pod.pd1");
+let w2 = document.querySelector(".pod.pd2");
+let w3 = document.querySelector(".pod.pd3");
+let w4 = document.querySelector(".pod.pd4");
+let w5 = document.querySelector(".mydocs label:last-child");
 
 function w_statusChanged() {
   if (w_status.value == "business") {
-    w1.innerText = "Business name";
-    w2.innerText = "Business type";
+    w1.innerText = "Business type";
+    w2.innerText = "Business name";
     w3.innerText = "Business location";
     w4.innerText = "Business contact";
     w5.style.display = "grid";
@@ -603,11 +614,10 @@ function w_statusChanged() {
     w2.innerText = "Current position";
     w3.innerText = "Company location";
     w4.innerText = "Company contact";
-    w5.style.display = "none";
+    w5.style.display = "knone";
   }
 }
-w_statusChanged();
-
+//w_statusChanged();
 
 email.addEventListener("blur", () => {
   if (email.value !== "") {
@@ -632,14 +642,12 @@ allinputs.forEach((nput) => {
     let txt = nput.value;
     if (nput.type == "email") {
       nput.value = txt.toLowerCase();
-      
     } else {
       nput.value = txt.toLowerCase().replace(/\b\w/g, (s) => s.toUpperCase());
     }
     nput.addEventListener("change", (e) => {
       w_statusChanged();
     });
-
   });
 });
 
@@ -674,30 +682,31 @@ const createnew_id = () => {
 /*======================
   Form Tabs Navigation
 ------------------------*/
+let tabs = current_form.querySelectorAll("table.client .tab");
+
 const netxt_tab = (step) => {
-  if (step > 0 && current_tab < 5) {
+  if (step > 0 && current_tab < 6) {
     current_tab = current_tab + step;
   } else if (step < 0 && current_tab > 0) {
     current_tab = current_tab + step;
   }
-  let tabs = current_form.querySelectorAll("table td");
   for (let i = 0; i < tabs.length; i++) {
-    //tabs[i].style.display = "none";
     tabs[i].classList.remove("shown");
     if (i == current_tab) {
-      //tabs[i].style.display = "grid";
       tabs[i].classList.add("shown");
     }
   }
 
-  let x = document.querySelectorAll(".submit .btn");
+  let x = document.querySelectorAll(".submit button");
   if (current_tab > 0) {
     x[0].classList.add("shown");
   } else {
     x[0].classList.remove("shown");
   }
-  if (current_tab == 5) {
+  if (current_tab == 6) {
     x[1].innerText = "SUBMIT";
+  }else {
+    x[1].innerText = "NEXT";
   }
 };
 netxt_tab(0);
@@ -705,10 +714,10 @@ netxt_tab(0);
 /*=====================
   Validate Empty Inputs
 -----------------------*/
+
 function validateEmpties() {
   let valid = true;
-  let td = current_form.querySelectorAll("form td");
-  let x = td[current_tab].querySelectorAll(".nput");
+  let x = tabs[current_tab].querySelectorAll(".nput");
 
   dateinputs.forEach((input) => {
     if (input.classList.contains("invalid")) {
@@ -719,7 +728,6 @@ function validateEmpties() {
   });
 
   for (let i = 0; i < x.length; i++) {
-
     if (x[i].id !== "phonenum3") {
       if (x[i].value == "" || x[i].classList.contains("invalid")) {
         x[i].classList.add("invalid");
@@ -728,7 +736,7 @@ function validateEmpties() {
     }
   }
   if (valid) {
-    if (current_tab == 5) {
+    if (current_tab == 6) {
       createnew_id();
     } else {
       netxt_tab(1);
@@ -750,8 +758,9 @@ function submitnewClient() {
       document.querySelector(".modal").classList.add("saved");
       sessionStorage.removeItem("cc_newuser");
       document.getElementById("newclient").reset();
-    })
+    });
 }
+
 let forms = document.querySelectorAll(".forms form");
 function open_forms(fm) {
   for (let i = 0; i < forms.length; i++) {
@@ -759,13 +768,41 @@ function open_forms(fm) {
     if (forms[i].id == fm) {
       current_form = forms[i];
       current_form.classList.add("shown");
-      //current_form.reset();
-      netxt_tab(0);
+      current_form.reset();
+      netxt_tab(5);
     } else {
       forms[i].classList.remove("shown");
     }
   }
 }
+open_forms("");
+
+function toCurrency(value) {
+  // ---------- Currency function
+  return (
+    "Ksh " +
+    parseFloat(value).toLocaleString("en-US", {
+      style: "decimal",
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2,
+    })
+  );
+}
+
+function tofloat(nputval) {
+  // ---------- tofloat function
+  var float = Number(nputval.replace(/[^0-9.-]+/g, ""));
+  return float;
+}
+
+function addDays(date, days) {
+  // ---------- Duedate function function
+  const newDate = new Date(date);
+  newDate.setDate(date.getDate() + days);
+  return newDate;
+}
+
+
 open_forms('newclient');
 
 
