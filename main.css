@@ -99,7 +99,7 @@ body {
   padding: 5px;
   display: grid;
   position: relative;
-  padding-top: calc(1% + 100px);
+  padding-top: calc(1% + 5px);
   background-color: #0000004d;
 }
 .forms {
