@@ -1,2 +1,0 @@
-# citycoin
-Test App
