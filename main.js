@@ -2,93 +2,88 @@
  FIREBASE API CONFIG
 =====================*/
 const firebaseConfig = {
-    apiKey: "AIzaSyAHYguXNxgoBQq0rdoFOj9MMppCU9kmE-Y",
-    authDomain: "citycoin2025.firebaseapp.com",
-    databaseURL: "https://citycoin2025-default-rtdb.firebaseio.com",
-    projectId: "citycoin2025",
-    storageBucket: "citycoin2025.firebasestorage.app",
-    messagingSenderId: "1024446979523",
-    appId: "1:1024446979523:web:f2b3b89e039c92aaef7176"
+  apiKey: "AIzaSyAHYguXNxgoBQq0rdoFOj9MMppCU9kmE-Y",
+  authDomain: "citycoin2025.firebaseapp.com",
+  databaseURL: "https://citycoin2025-default-rtdb.firebaseio.com",
+  projectId: "citycoin2025",
+  storageBucket: "citycoin2025.firebasestorage.app",
+  messagingSenderId: "1024446979523",
+  appId: "1:1024446979523:web:f2b3b89e039c92aaef7176",
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
- /*==================
- START fs_setup_cache
-=====================*/
+/*==================
+  START fs_setup_cache
+  =====================*/
 firebase.firestore().settings({
-    cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
+  cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED,
 });
-firebase.initializeApp({
-    apiKey: 'AIzaSyDZOkXdDSaw1xwonO7L8GcdSfQUtbSMM4c',
-    authDomain: 'cars-digital-3c158.firebaseapp.com',
-    projectId: 'cars-digital-3c158',
-} ,"persisted_app");
+firebase.initializeApp(
+  {
+    apiKey: "AIzaSyDZOkXdDSaw1xwonO7L8GcdSfQUtbSMM4c",
+    authDomain: "cars-digital-3c158.firebaseapp.com",
+    projectId: "cars-digital-3c158",
+  },
+  "persisted_app"
+);
 
- /*===================
- initialize_persistence
-======================*/
-firebase.firestore().enablePersistence()
-.catch((err) => {
-    if (err.code == 'failed-precondition') { 
-
-    } else if (err.code == 'unimplemented') { 
-
+/*===================
+  initialize_persistence
+  ======================*/
+firebase
+  .firestore()
+  .enablePersistence()
+  .catch((err) => {
+    if (err.code == "failed-precondition") {
+    } else if (err.code == "unimplemented") {
     }
-});
+  });
 
-
-
-var appdata = { 
-    users: [], 
-    loans: [],
-    payments: [],
+var appdata = {
+  users: [],
+  loans: [],
+  payments: [],
 };
 
 /* ===========
-FETCH USERS
-==============*/
+  FETCH USERS
+  ==============*/
 const fetchusers = () => {
-    let obj = {};
-db.collection("cc_userdata").where("cid", "!=", '')
-.onSnapshot({ includeMetadataChanges: true }, (snapshot) => {
-    snapshot.docChanges().forEach((change) => {
+  let obj = {};
+  db.collection("cc_userdata")
+    .where("cid", "!=", "")
+    .onSnapshot({ includeMetadataChanges: true }, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
         obj[change.doc.id] = change.doc.data();
         appdata.users = Object.values(obj);
+      });
     });
-
-});
-};fetchusers();
-
+};
+fetchusers();
 
 /*===================
-  Client Form Inputs
----------------------*/
-/*===================
-  Client Form Inputs
----------------------*/
-
+    Client Form Inputs
+  ---------------------*/
 let firstname = document.getElementById("fname");
 let secondname = document.getElementById("sname");
 let lastname = document.getElementById("lname");
 let dobirth = document.getElementById("dateob");
 let gender = document.getElementById("genda");
 let marital = document.getElementById("marital");
-let pic = document.getElementById("imagefile");
 
 let idnum = document.getElementById("idnumber");
 let krapin = document.getElementById("krapin");
 let email = document.getElementById("email");
-let mobno1 = document.getElementById("phonenum1");
-let mobno2 = document.getElementById("altvenumber");
-let mobno3 = document.getElementById("phonenum3");
+let phone = document.getElementById("phonenum1");
+let altphone = document.getElementById("altnumber");
 
 let county = document.getElementById("county");
 let currtown = document.getElementById("town");
 let subcounty = document.getElementById("subcounty");
 let sublocation = document.getElementById("sublocation");
-let physicaladdrss = document.getElementById("physicaladdrss");
+let physical_address = document.getElementById("physical_address");
 
 let w_status = document.getElementById("w_status");
 let w_name = document.getElementById("w_name");
@@ -102,25 +97,23 @@ let nok_town = document.getElementById("nok_town");
 let nok_area = document.getElementById("w_town");
 let nok_tel = document.getElementById("nok_contact");
 
-let doc1 = document.getElementById("dox1");
-let doc2 = document.getElementById("dox2");
-let doc3 = document.getElementById("dox3");
+let file_1 = document.getElementById("img_1");
+let file_2 = document.getElementById("id_a");
+let file_3 = document.getElementById("id_b");
+let file_4 = document.getElementById("tax_c");
+let file_5 = document.getElementById("biz_p");
 
 let current_tab = 0; // Current Tab
-//let current_form = document.createElement("form"); // Current Form
-let current_form = document.getElementById("newclient"); // Current Form
-
-let allinputs = current_form.querySelectorAll(".lbl .nput"); //selects all text Inputs
-let dropdowninputs = current_form.querySelectorAll(".lbl.drod .nput"); //selects all dropdown Inputs
-let checkboxes = current_form.querySelectorAll(".lbl.cbox .nput"); //selects all checkbox Inputs
+let current_form = document.getElementById("userform");
+let all_inputs = current_form.querySelectorAll("seection .nput");
 let current_input = document.createElement("input");
 
 let dropdownlists = current_form.querySelectorAll(".dropdwn"); //selects all droplists
 let currentdropList = document.createElement("ul"); //  gets current droplists
 
 /*====================
-	Get Years List
-----------------------*/
+      Get Years List
+  ----------------------*/
 let yearOfFset = 55;
 const getYears = (Year) => {
   let yrs = [];
@@ -130,8 +123,8 @@ const getYears = (Year) => {
   return yrs;
 };
 /*====================
-	Get Days List
-----------------------*/
+      Get Days List
+  ----------------------*/
 const getmonthDays = (mon, yr) => {
   let list = [];
   let d = new Date(yr, mon, 0).getDate();
@@ -142,8 +135,8 @@ const getmonthDays = (mon, yr) => {
 };
 
 /*====================
-	Age Calculator
-----------------------*/
+      Age Calculator
+  ----------------------*/
 const CalculatorAge = (dt) => {
   let userdate = dt;
   let dob = new Date(userdate);
@@ -158,8 +151,8 @@ const CalculatorAge = (dt) => {
   }
 };
 /*====================
-	Validate Number Input
-----------------------*/
+      Validate Number Input
+  ----------------------*/
 function validatenumber(evt) {
   var theEvent = evt || window.event;
   if (theEvent.type === "paste") {
@@ -176,8 +169,8 @@ function validatenumber(evt) {
 }
 
 /*====================
-	CheckBox Function
-----------------------*/
+      CheckBox Function
+  ----------------------*/
 function onecheckBox(cbox) {
   let id = cbox.id;
   let x = document.getElementsByName(cbox.name);
@@ -199,8 +192,8 @@ function onecheckBox(cbox) {
 }
 
 /*====================
-	GET Random Numbers
-----------------------*/
+      GET Random Numbers
+  ----------------------*/
 function RandomNumber(min, max) {
   var minn = Math.ceil(min);
   var maxx = Math.floor(max);
@@ -208,8 +201,8 @@ function RandomNumber(min, max) {
 }
 
 /*====================
-	 Months List
-----------------------*/
+       Months List
+  ----------------------*/
 let monthlist = [
   "Jan",
   "Feb",
@@ -226,8 +219,8 @@ let monthlist = [
 ];
 
 /*====================
-	 Fetch Data Lists
-----------------------*/
+       Fetch Data Lists
+  ----------------------*/
 const getListdata = (list) => {
   let x = [];
   if (list == "days") {
@@ -314,8 +307,8 @@ const getListdata = (list) => {
 };
 
 /*====================
- Dropdown Static Data
-----------------------*/
+   Dropdown Static Data
+  ----------------------*/
 let staticInputs = document.querySelectorAll(
   "#county, #town, #subcounty, #sublocation, #w_type, #w_town, #nok_town, #nok_relation"
 );
@@ -335,8 +328,8 @@ staticInputs.forEach((input) => {
 });
 
 /*====================
- Dropdown Dynamic Data
-----------------------*/
+   Dropdown Dynamic Data
+  ----------------------*/
 const dynamicData = (input, list) => {
   if (input.id) {
     let x = getListdata(input.id); // use input id to filter data
@@ -352,8 +345,8 @@ const dynamicData = (input, list) => {
 };
 
 /*====================
- Form Inputs Clicked
-----------------------*/
+   Form Inputs Clicked
+  ----------------------*/
 function newposition(input) {
   let ol = input.offsetLeft;
   let ow = input.offsetWidth;
@@ -380,8 +373,8 @@ function showHide(disp) {
     currentdropList.style.display = "none";
   }
 }
-
-allinputs.forEach((input) => {
+/*
+all_inputs.forEach((input) => {
   // show dropdown lists
   input.addEventListener("click", function () {
     current_input = this;
@@ -392,11 +385,12 @@ allinputs.forEach((input) => {
     }
   });
 });
+*/
 
 /*
-/*===============================
- Close dropLists on window click
---------------------------------*/
+  /*===============================
+   Close dropLists on window click
+  --------------------------------*/
 window.addEventListener("mouseup", function (e) {
   dropdownlists.forEach((item) => {
     if (!e.target.closest(".dropdwn") && !(e.target == current_input)) {
@@ -406,8 +400,8 @@ window.addEventListener("mouseup", function (e) {
 });
 
 /*====================
- Dates Inputs
-----------------------*/
+   Dates Inputs
+  ----------------------*/
 let days = document.getElementById("days");
 let months = document.getElementById("months");
 let years = document.getElementById("years");
@@ -443,8 +437,8 @@ function fetchdates(dx, mx, yx) {
 fetchdates(days, months, years);
 
 /*====================
- Dates Inputs Clicked
-----------------------*/
+   Dates Inputs Clicked
+  ----------------------*/
 let dateinputs = document.querySelectorAll("#days, #months, #years");
 dateinputs.forEach((nput) => {
   nput.addEventListener("click", function () {
@@ -465,8 +459,8 @@ dateinputs.forEach((nput) => {
 });
 
 /*==============================
- Vissible Dropdown List Clicked
--------------------------------*/
+   Vissible Dropdown List Clicked
+  -------------------------------*/
 dropdownlists.forEach((item) => {
   item.addEventListener("click", (e) => {
     let li = e.target.closest("li");
@@ -486,8 +480,8 @@ dropdownlists.forEach((item) => {
 });
 
 /*=====================
-  Set Full Names
------------------------*/
+    Set Full Names
+  -----------------------*/
 const setfullname = () => {
   let x;
   if (lastname.value !== "") {
@@ -498,16 +492,26 @@ const setfullname = () => {
   return x;
 };
 
+function optionselect(np){
+  let options = document.querySelectorAll(".option select");
+  options.forEach((nput) => {
+    nput.selectedIndex = "-1";
+  });
+}
+optionselect();
 /*=====================
-  Image File Input
------------------------*/
+    Image File Input
+  -----------------------*/
+
+  
 const resizeimage = (nput, preview) => {
-  let mg = nput.files[0];
-  if (mg) {
+  let newH = 100;
+  let file = nput.files[0];
+  if (file) {
     let reader = new FileReader();
-    reader.readAsDataURL(mg);
-    reader.name = mg.name;
-    reader.size = mg.size;
+    reader.readAsDataURL(file);
+    reader.name = file.name;
+    reader.size = file.size;
 
     reader.onload = function (event) {
       let img = new Image();
@@ -517,36 +521,30 @@ const resizeimage = (nput, preview) => {
 
       img.onload = function (el) {
         let x = document.createElement("canvas");
-        let W = el.target.width;
-        let H = el.target.height;
-        if (H > W) {
-          x.height = 160;
-          x.width = Math.round((W * 160) / H);
-        } else if (W > H) {
-          x.width = 150;
-          x.height = Math.round((H * 150) / W);
-        } else {
-          x.width = 150;
-          x.height = 160;
-        }
+        let xfactor = newH / el.target.height;
+        x.width = el.target.width * xfactor;
+        x.height = newH;
+
         let cx = x.getContext("2d");
         cx.drawImage(el.target, 0, 0, x.width, x.height);
         let srcEncoded = cx.canvas.toDataURL("image/png", 1);
         nput.dataset.url = srcEncoded;
-        preview.src = nput.dataset.url;
+        document.getElementById(preview).src = nput.dataset.url;
       };
     };
   }
 };
+resizeimage(file_1, "prev_1");
+resizeimage(file_2, "imgid_a");
+resizeimage(file_3, "imgid_b");
+resizeimage(file_4, "imgtax_c");
+resizeimage(file_5, "imgbiz_p");
 
-resizeimage(pic, document.getElementById("prev0"));
-resizeimage(doc1, document.getElementById("prev1"));
-resizeimage(doc2, document.getElementById("prev2"));
-resizeimage(doc3, document.getElementById("prev3"));
+
 
 /*=====================
-  Fetch Form Data
------------------------*/
+    Fetch Form Data
+  -----------------------*/
 function newuserdata(cid) {
   let xfullname = setfullname().toLowerCase();
   const newdata = {
@@ -560,17 +558,13 @@ function newuserdata(cid) {
     krapin: krapin.value,
     email: email.value,
 
-    contacts: [
-      mobno1.value.toString(),
-      mobno2.value.toString(),
-      mobno3.value.toString(),
-    ],
+    contacts: [phone.value.toString(), altphone.value.toString()],
     address: [
       county.value,
       currtown.value,
       subcounty.value,
       sublocation.value,
-      physicaladdrss.value,
+      physical_address.value,
     ],
     workstatus: [
       w_status.value,
@@ -586,21 +580,25 @@ function newuserdata(cid) {
       nok_area.value,
       nok_tel.value.toString(),
     ],
-    images: [pic.dataset.url],
-    docs: [doc1.dataset.url, doc2.dataset.url, doc3.dataset.url],
+    pic: [file_1.dataset.url],
+    docs: [
+      file_2.dataset.url,
+      file_3.dataset.url,
+      file_4.dataset.url,
+      file_5.dataset.url,
+    ],
     regdate: new Date().toLocaleDateString(),
   };
   sessionStorage.setItem("cc_newuser", JSON.stringify(newdata));
 }
 
 /*============================
-   Work Status Changed
-------------------------------*/
+     Work Status Changed
+  ------------------------------*/
 let w1 = document.querySelector(".pod.pd1");
 let w2 = document.querySelector(".pod.pd2");
 let w3 = document.querySelector(".pod.pd3");
 let w4 = document.querySelector(".pod.pd4");
-let w5 = document.querySelector(".mydocs label:last-child");
 
 function w_statusChanged() {
   if (w_status.value == "business") {
@@ -608,13 +606,11 @@ function w_statusChanged() {
     w2.innerText = "Business name";
     w3.innerText = "Business location";
     w4.innerText = "Business contact";
-    w5.style.display = "grid";
   } else {
     w1.innerText = "Company name";
     w2.innerText = "Current position";
     w3.innerText = "Company location";
     w4.innerText = "Company contact";
-    w5.style.display = "knone";
   }
 }
 //w_statusChanged();
@@ -632,9 +628,9 @@ email.addEventListener("blur", () => {
 });
 
 /*============================
-   Current Form Input Changes
-------------------------------*/
-allinputs.forEach((nput) => {
+     Current Form Input Changes
+  ------------------------------*/
+all_inputs.forEach((nput) => {
   nput.addEventListener("input", (e) => {
     newuserdata("");
   });
@@ -652,8 +648,8 @@ allinputs.forEach((nput) => {
 });
 
 /*========================
-   Create New Client ID
--------------------------*/
+     Create New Client ID
+  -------------------------*/
 const createnew_id = () => {
   let arry = [];
   let ref = db.collection("cc_userdata");
@@ -680,24 +676,28 @@ const createnew_id = () => {
 };
 
 /*======================
-  Form Tabs Navigation
-------------------------*/
-let tabs = current_form.querySelectorAll("table.client .tab");
+    Form Tabs Navigation
+  ------------------------*/
 
+
+let tabs = current_form.querySelectorAll(".inputs section");
 const netxt_tab = (step) => {
   if (step > 0 && current_tab < 6) {
     current_tab = current_tab + step;
   } else if (step < 0 && current_tab > 0) {
     current_tab = current_tab + step;
   }
+
   for (let i = 0; i < tabs.length; i++) {
     tabs[i].classList.remove("shown");
     if (i == current_tab) {
       tabs[i].classList.add("shown");
     }
   }
-
+  
   let x = document.querySelectorAll(".submit button");
+  let photo = document.querySelector("#userform .image");
+
   if (current_tab > 0) {
     x[0].classList.add("shown");
   } else {
@@ -705,18 +705,38 @@ const netxt_tab = (step) => {
   }
   if (current_tab == 6) {
     x[1].innerText = "SUBMIT";
-  }else {
+    photo.classList.remove("shown");
+  } else {
     x[1].innerText = "NEXT";
+    photo.classList.add("shown");
+  }
+
+  let tab = document.querySelector(".inputs h6");
+  if (current_tab == 0) {
+    tab.innerText = "PROFILE";
+  } else if (current_tab == 1) {
+    tab.innerText = "IDENTITY";
+  } else if (current_tab == 2) {
+    tab.innerText = "CONTACTS";
+  } else if (current_tab == 3) {
+    tab.innerText = "ADRESS";
+  } else if (current_tab == 4) {
+    tab.innerText = "EMPLOYMENT";
+  } else if (current_tab == 5) {
+    tab.innerText = "KIN";
+  } else if (current_tab == 6) {
+    tab.innerText = "DOCUMENTS";
   }
 };
 netxt_tab(0);
 
 /*=====================
-  Validate Empty Inputs
------------------------*/
+    Validate Empty Inputs
+  -----------------------*/
 
-function validateEmpties() {
+function validateEmpties(btn) {
   let valid = true;
+  btn.classList.remove("invalid");
   let x = tabs[current_tab].querySelectorAll(".nput");
 
   dateinputs.forEach((input) => {
@@ -727,14 +747,22 @@ function validateEmpties() {
     }
   });
 
+  if (file_1.files.length == 0) {
+    file_1.classList.add("invalid");
+    valid = false;
+    btn.classList.add("invalid");
+  } else {
+    file_1.classList.remove("invalid");
+  }
+
   for (let i = 0; i < x.length; i++) {
-    if (x[i].id !== "phonenum3") {
-      if (x[i].value == "" || x[i].classList.contains("invalid")) {
-        x[i].classList.add("invalid");
-        valid = false;
-      }
+    if (x[i].value == "" || x[i].classList.contains("invalid")) {
+      x[i].classList.add("invalid");
+      btn.classList.add("invalid");
+      valid = false;
     }
   }
+
   if (valid) {
     if (current_tab == 6) {
       createnew_id();
@@ -744,38 +772,19 @@ function validateEmpties() {
   }
 }
 
-/*
 /*=====================
-  Submit and Save Client
------------------------*/
+    Submit and Save Client
+  -----------------------*/
 function submitnewClient() {
   let data = JSON.parse(sessionStorage.getItem("cc_newuser"));
   db.collection("cc_userdata")
     .add(data)
     .then((docRef) => {
-      //alert("Saved successfully!");
-      open_forms("");
-      document.querySelector(".modal").classList.add("saved");
+      document.querySelector(".main").classList.add("submitted");
       sessionStorage.removeItem("cc_newuser");
-      document.getElementById("newclient").reset();
+      document.getElementById("userform").reset();
     });
 }
-
-let forms = document.querySelectorAll(".forms form");
-function open_forms(fm) {
-  for (let i = 0; i < forms.length; i++) {
-    forms[i].classList.remove("shown");
-    if (forms[i].id == fm) {
-      current_form = forms[i];
-      current_form.classList.add("shown");
-      current_form.reset();
-      netxt_tab(5);
-    } else {
-      forms[i].classList.remove("shown");
-    }
-  }
-}
-open_forms("");
 
 function toCurrency(value) {
   // ---------- Currency function
@@ -801,11 +810,3 @@ function addDays(date, days) {
   newDate.setDate(date.getDate() + days);
   return newDate;
 }
-
-
-open_forms('newclient');
-
-
-
-
-
