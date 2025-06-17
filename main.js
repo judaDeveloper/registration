@@ -373,19 +373,6 @@ function showHide(disp) {
     currentdropList.style.display = "none";
   }
 }
-/*
-all_inputs.forEach((input) => {
-  // show dropdown lists
-  input.addEventListener("click", function () {
-    current_input = this;
-    if (this.name) {
-      currentdropList = this.parentElement.querySelector("#" + this.name);
-      let disp = currentdropList.style.display;
-      showHide(disp);
-    }
-  });
-});
-*/
 
 /*
   /*===============================
@@ -560,23 +547,23 @@ function newuserdata(cid) {
 
     contacts: [phone.value.toString(), altphone.value.toString()],
     address: [
-      county.value,
-      currtown.value,
-      subcounty.value,
-      sublocation.value,
+     county.options[county.selectedIndex].text,
+     currtown.options[currtown.selectedIndex].text,
+     subcounty.options[subcounty.selectedIndex].text,
+     sublocation.options[sublocation.selectedIndex].text,
       physical_address.value,
     ],
     workstatus: [
       w_status.value,
       w_name.value,
-      w_type.value,
-      w_town.value,
+     w_type.options[w_type.selectedIndex].text,
+     w_town.options[w_town.selectedIndex].text,
       w_contact.value.toString(),
     ],
     nokin: [
       nok_name.value,
-      nok_relation.value,
-      nok_town.value,
+     nok_relation.options[nok_relation.selectedIndex].text,
+     nok_town.options[nok_town.selectedIndex].text,
       nok_area.value,
       nok_tel.value.toString(),
     ],
