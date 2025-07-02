@@ -1,7 +1,3 @@
-.modalS,
-.loan_modal {
-  display: none;
-}
 
 * {
   margin: 0;
@@ -695,7 +691,7 @@ input.invalid[type="button"] {
 .docs .lb img[src="#"] {
   width: 40px;
   height: 40px;
-  content: url("/platform/add-image.png");
+  content: url("https://judadeveloper.github.io/registration/add-image.png");
 }
 .docs .lb:has(img:not([src="#"])) {
   width: fit-content;
