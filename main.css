@@ -62,7 +62,7 @@ header .row img {
   background-size: cover;
   background-color: #ffffff;
   background-repeat: no-repeat;
-  background-image: url("/platform/banner.png");
+  background-image: url("https://judadeveloper.github.io/registration/banner.png");
 }
 .card {
   display: grid;
@@ -228,7 +228,7 @@ button:hover {
   background-repeat: no-repeat;
   background-color: #54c0ff;
   background-repeat: no-repeat;
-  background-image: url("/platform/banner.png");
+  background-image: url("https://judadeveloper.github.io/registration/banner.png");
 }
 #userform h3 {
   padding: 10px;
@@ -280,7 +280,7 @@ button:hover {
   min-height: 40px;
   border-radius: 100%;
   background-color: #0e9efd;
-  content: url("https://judadeveloper.github.io/newaccount/photo.svg");
+  content: url("https://judadeveloper.github.io/registration/photo.svg");
 }
 .imagebox:has(img:not([src="#"])) {
   background-color: #75bcff;
