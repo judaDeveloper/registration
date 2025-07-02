@@ -203,6 +203,7 @@ button:hover {
 }
 .heada img {
   width: 100px;
+  content: url("https://judadeveloper.github.io/registration/logo.png");
 }
 .heada .xbtn {
   top: 3px;
