@@ -47,11 +47,11 @@ let nok_relation = document.getElementById("nok_relation");
 let nok_town = document.getElementById("nok_town");
 let nok_contact = document.getElementById("nok_contact");
 
-let file_1 = document.getElementById("userpic");
-let file_2 = document.getElementById("idcard_a");
-let file_3 = document.getElementById("idcard_b");
-let file_4 = document.getElementById("kracert");
-let file_5 = document.getElementById("b_permit");
+let file_1 = document.getElementById("imgi");
+let file_2 = document.getElementById("imgii");
+let file_3 = document.getElementById("imgiii");
+let file_4 = document.getElementById("imgiv");
+let file_5 = document.getElementById("imgv");
 
 let current_tab = 0;
 let current_form = document.getElementById("userform");
@@ -67,7 +67,6 @@ let current_dropdown = document.createElement("ul");
 let fileinputs = current_form.querySelectorAll("input[type='file']");
 
 
-// ------------------------------------------ >>>
 
 const CalculatorAge = (dt) => {
   let userdate = dt;
@@ -83,68 +82,93 @@ const CalculatorAge = (dt) => {
   }
 };
 
-// ------------------------------------------ >>>
-const resizeimage = (nput) => {
-  let newH = 300;
-  let file = nput.files[0];
-  let preview = nput.nextElementSibling;
-  if (nput.dataset.url) {
-    preview.src = nput.dataset.url;
-  }
-  if (file) {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.name = file.name;
-    reader.size = file.size;
 
-    reader.onload = function (event) {
-      let img = new Image();
-      img.src = event.target.result;
-      img.name = event.target.name;
-      img.size = event.target.size;
 
-      img.onload = function (el) {
-        let x = document.createElement("canvas");
-        let xfactor = newH / el.target.height;
-        x.width = el.target.width * xfactor;
-        x.height = newH;
 
-        let cx = x.getContext("2d");
-        cx.drawImage(el.target, 0, 0, x.width, x.height);
-        let srcEncoded = cx.canvas.toDataURL("image/png", 1);
-        nput.dataset.url = srcEncoded;
-        preview.src = nput.dataset.url;
-      };
+
+/*
+ Input Images/Files
+ ----------------------*/
+
+const readnResize = (file, nput) => {
+  let maxWidth = 300;
+  let maxHeight = 300;
+  let reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.name = file.name;
+  reader.size = file.size;
+
+  reader.onload = function (event) {
+    let img = new Image();
+    img.src = event.target.result;
+    img.name = event.target.name;
+    img.size = event.target.size;
+
+    img.onload = function (el) {
+      let mg = document.createElement("canvas");
+      let w = img.width;
+      let h = img.height;
+      if (w > h) {
+        if (w > maxWidth) {
+          h = Math.round((h * maxWidth) / w);
+          w = maxWidth;
+        }
+      } else {
+        if (h > maxHeight) {
+          w = Math.round((w * maxHeight) / h);
+          h = maxHeight;
+        }
+      }
+      mg.width = w;
+      mg.height = h;
+      let cx = mg.getContext("2d");
+      cx.drawImage(el.target, 0, 0, mg.width, mg.height);
+      let srcEncoded = cx.canvas.toDataURL("image/png", 1);
+      nput.dataset.url = srcEncoded;
+      previewImage(nput);
     };
-  }
+  };
 };
 
 fileinputs.forEach((nput) => {
   nput.onchange = function (e) {
     let file = nput.files[0];
     if (!file) return; // Exit if no file selected
-    let reader = new FileReader();
-    reader.onload = function () {
-      nput.dataset.url = reader.result; // Store the base64 string in the input's dataset
-      previewImage(nput);
+    readnResize(file, nput);
     };
-    reader.readAsDataURL(file);
-  };
 });
 
-function previewImage() {
-  fileinputs.forEach((nput) => {
-    let url = nput.dataset.url;
-    let imge = nput.nextElementSibling;
-    if (url) {
-      nput.classList.remove("invalid");
-      imge.src = url;
-    } else {
-      imge.src = "#";
-    }
-  });
+function previewImage(nput) {
+  let url = nput.dataset.url;
+  let imge = nput.nextElementSibling;
+  if (url) {
+    imge.src = url;
+    nput.classList.remove("invalid");
+  } else {
+    imge.src = "#";
+  }
 }
-previewImage();
+
+function previewAll() {
+  fileinputs.forEach((nput) => {
+    previewImage(nput);
+  });
+};previewAll();
+
+/*
+==============================*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*====================
       Validate Number Input
@@ -574,7 +598,7 @@ function getprofile() {
   } else {
     alert("No data found");
   }
-  previewImage();
+  previewAll();
 }
 
 /*
@@ -631,7 +655,6 @@ const netxt_tab = (step) => {
     sub_x[1].innerText = "NEXT";
   }
   let tab = document.querySelector(".inputs h6");
-  let current_lbs = tabs[current_tab].querySelectorAll(".lb");
   if (current_tab == 0) {
     tab.innerText = "PROFILE";
   } else if (current_tab == 1) {
@@ -646,14 +669,8 @@ const netxt_tab = (step) => {
     } else {
       tab.innerText = "EMPLOYMENT";
     }
-    current_lbs.forEach((lb) => {
-      lb.style.marginBottom = "15px";
-    });
   } else if (current_tab == 5) {
     tab.innerText = "NEX OF KIN";
-    current_lbs.forEach((lb) => {
-      lb.style.marginBottom = "20px"
-    });
   } else if (current_tab == 6) {
     tab.innerText = "DOCUMENTS";
   }
@@ -781,28 +798,6 @@ function addDays(date, days) {
   newDate.setDate(date.getDate() + days);
   return newDate;
 }
-function resetform() {
-  fileinputs.forEach((nput) => {
-    nput.dataset.url = "";
-  });
-  document.getElementById("userform").reset();
-  document.querySelector(".modal").classList.remove("submited");
-  sessionStorage.removeItem(document_id.value.toString());
-  previewImage(); // Reset image previews
-  fetchdates();
-  current_tab = 0; // Reset to first tab
-  netxt_tab(0); // Show first tab
-}
-resetform();
-//netxt_tab(6);
-
-function openResetform() {
-    resetform();
-    document.querySelector(".modal").style.display ="grid";
-    createnew_id(RandomNumber(100000, 999999));
-}
-
-
 
 /* Fetch Form Data
   -----------------*/
@@ -900,6 +895,27 @@ const createnew_id = (random) => {
 /*========================================================
 */  
 
+
+const getDbChanges = () => {
+  let changes = [];
+  db.collection("Usersdbcc")
+    .where("cid", "!=", "")
+    .onSnapshot({ includeMetadataChanges: true }, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        changes.push(change.type);
+        console.log(changes);
+
+        //obj[change.doc.id] = change.doc.data();
+        //var source = snapshot.metadata.fromCache ? "local cache" : "server";
+        // console.log("Data came from " + source);
+      });
+      //currentloans();
+      //listloans();
+    });
+};
+
+
+
 /* validate Doc submitted
   -----------------------*/
 function validateDoc_Changes(dbname, docId) {
@@ -951,3 +967,24 @@ const submitUserData = () => {
         validateDoc_Changes("Usersdbcc", newuser_cid.value);
       });
   };
+
+  function resetform() {
+    fileinputs.forEach((nput) => {
+      nput.dataset.url = "";
+    });
+    document.getElementById("userform").reset();
+    document.querySelector(".modal").classList.remove("submited");
+    sessionStorage.removeItem(document_id.value.toString());
+    previewAll(); // Reset image previews
+    fetchdates();
+    current_tab = 0; // Reset to first tab
+    netxt_tab(0); // Show first tab
+  }
+  resetform();
+  //netxt_tab(6);
+
+  function openResetform() {
+    resetform();
+    document.querySelector(".modal").style.display = "grid";
+    createnew_id(RandomNumber(100000, 999999));
+  }
