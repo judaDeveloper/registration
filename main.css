@@ -116,7 +116,7 @@ button:hover {
   max-width: 1280px;
   position: absolute;
   border-radius: 5px;
-  display: hnone;
+  display: none;
   overflow-y: auto;
 }
 .forms {
