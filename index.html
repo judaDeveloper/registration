@@ -49,7 +49,7 @@
         <div class="modal">
           <div class="forms">
             <div class="userform">
-              <header class="heada">
+              <div class="heada">
                 <img src="/platform/logo.png" alt="citycoin logo" />
                 <svg
                   class="xbtn"
@@ -60,33 +60,34 @@
                     d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
                   ></path>
                 </svg>
-              </header>
+              </div>
 
               <form id="userform" action="">
-                <h3>REGISTRATION</h3>
-                <div class="imagebox">
-                  <label class="content image" for="userpic">
-                    <input
-                      type="file"
-                      class="nput"
-                      id="userpic"
-                      accept=".png, .jpg, .jpeg"
-                      data-url=""
-                      required=""
-                      oninput="this.className = 'nput'"
-                    />
-                    <img src="#" alt="" />
-                  </label>
+                <div class="imagex">
+                  <h3>REGISTRATION</h3>
+                  <div class="imgbox">
+                    <label class="content" for="imgi">
+                      <input
+                        type="file"
+                        class="nput"
+                        id="imgi"
+                        accept=".png, .jpg, .jpeg"
+                        oninput="this.className = 'nput'"
+                      />
+                      <img src="#" alt="" />
+                    </label>
+                  </div>
                 </div>
+
                 <div class="inputs">
                   <div class="inputs_ids">
                     <h6>PROFILE</h6>
                     <small>Client id:</small>
-                    <input type="text" id="newuser_id"/>
-                    <small>Doc id:</small>
-                    <input type="text" id="newdoc_id"/>
-                    <input type="hidden" name="" id="userdb_name">
+                    <input type="text" id="newuser_id" value="000000" />
+
+                    <input type="text" id="newdoc_id" value="000000"/>
                   </div>
+
                   <section>
                     <div class="lb">
                       <p class="incon">
@@ -797,6 +798,59 @@
 
                   <section>
                     <div class="docs">
+                      <div class="imgbox">
+                        <label class="content" for="imgii">
+                          <input
+                            type="file"
+                            class="nput"
+                            id="imgii"
+                            accept=".png, .jpg, .jpeg"
+                            oninput="this.className = 'nput'"
+                          />
+                          <img src="#" alt="" />
+                        </label>
+                      </div>
+                      <div class="imgbox">
+                        <label class="content" for="imgiii">
+                          <input
+                            type="file"
+                            class="nput"
+                            id="imgiii"
+                            accept=".png, .jpg, .jpeg"
+                            oninput="this.className = 'nput'"
+                          />
+                          <img src="#" alt="" />
+                        </label>
+                      </div>
+                      <div class="imgbox">
+                        <label class="content" for="imgiv">
+                          <input
+                            type="file"
+                            class="nput"
+                            id="imgiv"
+                            accept=".png, .jpg, .jpeg"
+                            oninput="this.className = 'nput'"
+                          />
+                          <img src="#" alt="" />
+                        </label>
+                      </div>
+                      <div class="imgbox">
+                        <label class="content" for="imgv">
+                          <input
+                            type="file"
+                            class="nput"
+                            id="imgv"
+                            accept=".png, .jpg, .jpeg"
+                            oninput="this.className = 'nput'"
+                          />
+                          <img src="#" alt="" />
+                        </label>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section>
+                    <div class="docs">
                       <div class="lb">
                         <label class="content" for="idcard_a">
                           <input
@@ -806,7 +860,6 @@
                             accept=".png, .jpg, .jpeg"
                             data-url=""
                             oninput="this.className = 'nput'"
-                            
                           />
                           <img src="#" alt="" />
                         </label>
@@ -821,7 +874,6 @@
                             accept=".png, .jpg, .jpeg"
                             data-url=""
                             oninput="this.className = 'nput'"
-                            
                           />
                           <img src="#" alt="" />
                         </label>
@@ -836,7 +888,6 @@
                             accept=".png, .jpg, .jpeg"
                             data-url=""
                             oninput="this.className = 'nput'"
-                            
                           />
                           <img src="#" alt="" />
                         </label>
@@ -851,7 +902,6 @@
                             accept=".png, .jpg, .jpeg"
                             data-url=""
                             oninput="this.className = 'nput'"
-                            
                           />
                           <img src="#" alt="" />
                         </label>
@@ -879,6 +929,7 @@
         </div>
       </div>
     </div>
+    
     <script src="https://judadeveloper.github.io/registration/main.js"></script>
   </body>
 </html>
