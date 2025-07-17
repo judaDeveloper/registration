@@ -470,11 +470,14 @@ const CalculatorAge = (dt) => {
   }
 };
 
+
 // RESIZE UPLOADED FILES
-const resizeFiles = (nput) => {
+const resizeImages = (nput) => {
   let maxWidth = 300;
   let maxHeight = 300;
   let file = nput.files[0];
+  if (!file) return;
+
   let reader = new FileReader();
   reader.readAsDataURL(file);
   reader.name = file.name;
@@ -507,11 +510,20 @@ const resizeFiles = (nput) => {
       cx.drawImage(el.target, 0, 0, mg.width, mg.height);
       let srcEncoded = cx.canvas.toDataURL("image/png", 1);
       nput.dataset.url = srcEncoded;
-      nput.dispatchEvent(new Event("input"));
+      nput.nextElementSibling.src = srcEncoded;
     };
   };
 };
+inputfiles.forEach((nput) => {
+  nput.onchange = function (e) {
+    resizeImages(nput);
+    nput.dispatchEvent(new Event("input"));
+  };
+});
 
+
+
+/*
 inputfiles.forEach((nput) => {
   nput.onchange = function (e) {
     let file = nput.files[0];
@@ -528,6 +540,7 @@ inputfiles.forEach((nput) => {
     imge.src = url;
   });
 });
+*/
 
 // DATE OF BIRTH INPUTS
 const yearslist = () => {
