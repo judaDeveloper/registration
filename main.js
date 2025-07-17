@@ -911,8 +911,6 @@ function fetchnewData() {
 
 
 // DROPDOWNS INPUTS ========================================================
-
-
 //Close Dropdowns
 window.addEventListener("mouseup", function (e) {
   let tagElem = e.target;
@@ -1250,8 +1248,7 @@ function openResetform() {
   next_Tab(0);
 }
 
-next_Tab(3);
-
+next_Tab(0);
 
 
 const submitNewdata = (bn) => {
