@@ -60,7 +60,7 @@ header .row img {
   background-size: cover;
   background-color: #ffffff;
   background-repeat: no-repeat;
-  background-image: url("https: //judadeveloper.github.io/registration/banner.png");
+  background-image: url("https://judadeveloper.github.io/registration/banner.png");
 }
 .card {
   display: grid;
@@ -154,7 +154,7 @@ header .row img {
   background-color: #ffffff;
   background-repeat: no-repeat;
   grid-template-rows: 35px;
-  background-image: url("https: //judadeveloper.github.io/registration/banner.png");
+  background-image: url("https://judadeveloper.github.io/registration/banner.png");
   display: block;
 }
 .profileform form {
@@ -578,7 +578,7 @@ header .row img {
   height: 40px;
   border-radius: 0;
   background-color: #ffffff00;
-  content: url("https: //judadeveloper.github.io/registration/add-image.png");
+  content: url("https://judadeveloper.github.io/registration/add-image.png");
 }
 
 /* Inputs Hovered
