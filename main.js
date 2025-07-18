@@ -1176,7 +1176,7 @@ const submitNewdata = (btn) => {
     if (x) { n_valid.push(x);}
   });
   currentTab.inputfiles.forEach((file) => {
-    if (file == bspermit) return;
+    if (file == bspermit || file == kracert ) return;
     if (!file.dataset.url) { n_valid.push(file); }
   });
 
