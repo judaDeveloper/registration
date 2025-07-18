@@ -47,7 +47,7 @@ header {
   margin-bottom: 1px;
 }
 header .row {
-  display: flex;
+  display: grid;
   align-items: center;
   padding: 10px;
 }
@@ -68,33 +68,55 @@ header .row img {
   margin: 0 auto;
   max-width: 580px;
 }
+.card * {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .card h2 {
+  font-size: 20px;
   padding-bottom: 10px;
 }
 .card h5 {
-  font-weight: 600;
-  font-size: 14px;
-  padding-bottom: 10px;
-}
-.card button {
-  margin: 0 auto;
-  margin: 8px auto;
-  max-width: 500px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4d4d4d;
+  padding: 0 0px 40px 10px;
 }
 .card button {
   width: 100%;
+  display: flex;
+  margin: 0 auto;
   color: white;
   cursor: pointer;
-  font-size: 18px;
-  padding: 15px 20px;
-  border-radius: 5px;
+  font-size: 19px;
+  margin: 10px auto;
+  column-gap: 10px;
+  max-width: 500px;
+  border-radius: 30px;
+  align-items: center;
+  justify-content: start;
   background-color: #0099ff;
+  padding: 10px 10px 10px 30%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
 }
-
+.card button .btn_icon {
+  width: 40px;
+  height: 40px;
+  stroke: #ffffff;
+  padding: 6px;
+  fill: none;
+}
 .card button:hover {
   opacity: 0.8;
 }
 
+.notebelow {
+  padding: 30px;
+}
+.notebelow p {
+  padding: 10px;
+  font-size: 17px;
+  color: #464040;
+}
 @media screen and (min-width: 800px) {
   .forms {
     padding: 1% 3%;
@@ -105,7 +127,7 @@ header .row img {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   display: grid;
   margin: auto;
   min-width: 320px;
@@ -113,7 +135,6 @@ header .row img {
   position: absolute;
   border-radius: 6px;
   display: none;
-  overflow-y: auto;
 }
 .forms {
   border-radius: 6px;
@@ -164,11 +185,11 @@ header .row img {
   border-radius: 0 0 6px 6px;
   grid-template-rows: 220px minmax(400px, 1fr) ;
 }
-
 .imagex {
   display: grid;
   min-height: 210px;
 }
+
 .imagex h3 {
   margin: 0 auto;
   font-weight: 500;
@@ -441,6 +462,7 @@ header .row img {
   border-radius: 20px;
   font-size: 0.65rem;
   width: max-content;
+  opacity: 0;
 }
 .txt:has(textarea) {
   min-height: 60px;
@@ -494,7 +516,8 @@ header .row img {
   position: absolute;
 }
 
-.imgbox {
+/*IMAGE FILES*/
+.photoimge {
   padding: 8px;
   display: grid;
   margin: 0px auto;
@@ -503,7 +526,7 @@ header .row img {
   height: fit-content;
   border-radius: 5px;
 }
-.imgbox .content {
+.content.img {
   padding: 0px;
   display: grid;
   cursor: pointer;
@@ -517,24 +540,11 @@ header .row img {
   border: 1px solid #ffffff00;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
-.imgbox:has(img[src="#"]) .content {
+.photoimge .img:has(img[src="#"]) {
   min-width: 140px;
   min-height: 150px;
 }
-.imgbox .nput[type="file"] {
-  width: 0;
-  height: 0;
-  opacity: 0;
-  position: absolute;
-}
-.imgbox img {
-  width: 100%;
-  height: 100%;
-  max-width: 140px;
-  max-height: 150px;
-  border-radius: 4px;
-}
-.imgbox img[src="#"] {
+.img img[src="#"] {
   width: 60px;
   height: 60px;
   margin: auto;
@@ -542,47 +552,83 @@ header .row img {
   min-height: 40px;
   border-radius: 100%;
   background-color: #0e9efd;
-  content: url("https://judadeveloper.github.io/registration/photo.svg");
+  content: url("https://judadeveloper.github.io/registration/user.svg");
+}
+.img img:not([src="#"]) {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 4px;
+  max-height: 150px;
+}
+.img .nput[type="file"] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
 }
 
-.docs {
+.imgfile {
+  padding: 5px;
+  display: block;
+  margin-top: 10px;
+}
+.imgfile .img {
   width: 100%;
   display: grid;
-  row-gap: 10px;
-  column-gap: 18%;
-  font-size: 10px;
-  border-radius: 3px;
-  align-items: start;
-  justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-}
-.docs small {
-  font-size: 0.7rem;
-  text-align: center;
-}
-.docs .imgbox {
-  padding: 5px;
-}
-.docs:has(img[src="#"]) .content {
-  min-width: 120px;
-  min-height: 130px;
-  background-color: #ffffff;
-}
-.docs img {
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-}
-.docs img[src="#"] {
-  width: 40px;
-  height: 40px;
-  border-radius: 0;
+  font-size: 13px;
+  box-shadow: none;
+  color: #3b3b3b;
+  border-radius: 0%;
+  align-items: center;
+  justify-items: start;
+  padding: 5px 0 5px 0px;
+  max-width: 320px;
   background-color: #ffffff00;
-  content: url("https://judadeveloper.github.io/registration/add-image.png");
+  grid-template-columns: 1fr 70px;
+  border-bottom: 1px solid #acacac;
+}
+.imgfile .img img {
+  width: 70px;
+  padding: 0px;
+  height: 80px;
+  margin: auto;
+  min-width: 70px;
+  min-height: 80px;
+  border-radius: 5px;
+  background-color: #ffffffb0;
+}
+.imgfile .img img[src="#"] {
+  padding: 20px 20px;
+  content: url("https://judadeveloper.github.io/registration/file.svg");
 }
 
-/* Inputs Hovered
-*/
+.photoimge .content:hover,
+.photoimge .content:focus,
+.imgfile .content:hover img,
+.imgfile .content:focus img {
+  scale: 98%;
+  background-color: #ffffff;
+  border: 1px solid #14a1ff;
+}
+.imgfile .content:hover,
+.imgfile .content:focus, 
+.imgfile .content:has(img:not([src="#"])) {
+  color: #0099ff;
+  font-weight: 600;
+}
+.imgfile .content:has(img:not([src="#"])) img{
+  border: 1px solid #14a1ff;
+}
+
+.photoimge:has(.nput.invalid) .content {
+  border: 1px solid #ff686885;
+}
+.imgfile .content:has(.nput.invalid) img {
+  color: #ff686885;
+  border: 1px solid #ff686885;
+}
+
+
 .lb .content:hover {
   color: #008cff;
   border-radius: 4px;
@@ -596,12 +642,6 @@ header .row img {
   stroke: #008cff;
 } 
 .dt:hover  { color: #008cff; }
-.imgbox .content:hover,
-.imgbox .content:focus {
-  scale: 98%;
-  background-color: #f1f8ff;
-  border: 1px solid #14a1ff;
-}
 /*_______________________
 */
 
@@ -623,6 +663,10 @@ header .row img {
   color: #008cff;
   transform: translate3d(0, -80%, 0) scale(0.80);
 }
+
+.content:not(.cbox):not(.dob):has(.nput.invalid):focus-within .pod {
+  color: #ff7474;
+}
 /*_______________________
 */
 
@@ -643,9 +687,6 @@ header .row img {
   background-color: #c9e5ff;
 }
 
-.imgbox:has(img:not([src="#"])) {
-  background-color: #75bcff;
-}
 .content:not(.cbox):not(.dob):has(.nput:not(:placeholder-shown))  .pod  {
   transform: translate3d(0, -80%, 0) scale(0.80);
 }
@@ -666,20 +707,7 @@ header .row img {
 }
 
 
-.imgbox:has(.nput#imgi.invalid)  .content {
-  border: 1px solid #ff686885;
-}
-.imgbox:has(.nput#imgi.invalid)  img {
-  background-color: #ff9f9f;
-}
-.docs .imgbox:has(.nput.invalid) .content {
-  border: 1px solid #ff686885;
-}
-
-
-
 /*SUBMIT FORM*/
-
 .submtform {
   width: 100%;
   height: 60px;
@@ -689,7 +717,6 @@ header .row img {
   background-color: #dbe7f1;
   border-top: 1px solid #2b7fc4;
 }
-
 .submtform section {
   width: 100%;
   padding: 2px;
@@ -698,8 +725,7 @@ header .row img {
   margin: 0px auto;
   min-width: 320px;
 }
-
-.sbmt {
+.submtform button {
   height: 45px;
   display: grid;
   cursor: pointer;
@@ -707,56 +733,41 @@ header .row img {
   border-radius: 3px;
   align-content: center;
 }
-
-.sbmt:first-of-type {
+.submtform button:first-of-type {
   opacity: 0;
   width: 90px;
   pointer-events: none;
   background-color: #ffffff;
 }
-.sbmt:first-of-type.shown {
+.submtform button:first-of-type.shown {
   opacity: 1;
   pointer-events: visible;
 }
-.sbmt:first-of-type:hover {
+.submtform button:first-of-type:hover {
   color: #ff9898;
   background-color: #fff7f7ec;
 }
-
-.sbmt:last-of-type {
+.submtform button:last-of-type {
   width: 130px;
   color: #ffffff;
   font-weight: 600;
   background-color: #23a7ff;
 }
-
-.sbmt:last-of-type:hover {
+.submtform button:last-of-type:hover {
   font-weight: 700;
   background-color: #008cff;
 }
-
-.submtform:has(.sbmt.invalid) .sbmt.invalid {
+.submtform button.invalid {
   color: #ff1414;
   background-color: #ffececa4;
   border: 1px solid #ff1414;
 }
-
-
-.profileform.submit .sbmt:last-of-type:disabled {
+.profileform.submit .submtform button:last-of-type:disabled {
   opacity: 0.75;
   cursor: wait;
   background-color: #0095f8;
 }
 
-
-
-.preloda {
-  right: 0;
-  width: 50px;
-  height: 40px;
-  position: absolute;
-  background-color: #ff3d3d;
-}
 
 /*
  FORM PRELOADER
@@ -822,7 +833,6 @@ header .row img {
 .profileform.submit .loader {
   display: grid;
 }
-
 
 
 footer {
