@@ -147,7 +147,7 @@ header .row img {
   padding: 3px 3px 5px 10px;
   background-color: #ffffff;
   justify-content: space-between;
-  border-radius: 6px 6px 0px 0px;
+  border-radius: 0px 0px 0px 0px;
   border-bottom: 1px solid #c5daeb;
 }
 .heada img {
@@ -168,7 +168,7 @@ header .row img {
   display: grid;
   margin: 0px auto;
   max-width: 540px;
-  border-radius: 6px;
+  border-radius: 0px;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #54c0ff;
@@ -182,7 +182,7 @@ header .row img {
   width: 100%;
   display: grid;
   margin: 0 auto;
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 0px 0px;
   grid-template-rows: 220px minmax(400px, 1fr) ;
 }
 .imagex {
