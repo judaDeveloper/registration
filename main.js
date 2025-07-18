@@ -760,7 +760,7 @@ function formater(nput) {
     return nput;
   }
   container.classList.add("valid");
-  let nputext = nput.value.trim();
+  let nputext = nput.value;
   if (nput.type == "tel") {
     let isValid = nput.checkValidity();
     if (isValid == false) {
