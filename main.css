@@ -232,7 +232,7 @@ header .row img {
   display: grid;
   column-gap: 2px;
   margin: 0px auto;
-  margin-top: 8px;
+  margin-top: 10px;
   border-radius: 5px;
   position: relative;
   background-color: #00000000;
