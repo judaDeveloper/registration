@@ -924,7 +924,9 @@ function fetchnewData() {
 }
 
 
-// DROPDOWNS INPUTS 
+// DROPDOWNS INPUTS ========================================================
+
+
 //Close Dropdowns
 window.addEventListener("mouseup", function (e) {
   let tagElem = e.target;
@@ -935,6 +937,7 @@ window.addEventListener("mouseup", function (e) {
     });
   }
 });
+
 
 // DATA LISTS FILTERS
 let sublocations = {
@@ -1149,6 +1152,8 @@ dropdownInputs.forEach((nput) => {
 });
 
 
+//((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))
+
 
 forminputs.forEach((nput) => {
   nput.addEventListener("input", (e) => {
@@ -1160,7 +1165,7 @@ forminputs.forEach((nput) => {
 });
 
 
-//CREATE USER-ID 
+//CREATE USER-ID  ===================================================================
 let arrdocIDs = [];
 const fetchdocIDs = () => {
   db.collection("Usersdbcc").where("cid", "!=", "")
@@ -1219,6 +1224,7 @@ const fetchDocumentChanges = () => {
       sessionStorage.removeItem(doc.id.toString());
     });
 };
+// ===================================================================
 
 function openResetform() {
   current_form.querySelector("form").reset();
