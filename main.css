@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -73,21 +72,21 @@ header .row img {
   min-width: 300px;
   max-width: 460px;
 }
-.home .card * {
-  font-family: Arial, Helvetica, sans-serif;
-}
 .home .card h2 {
-  font-size: 16px;
+  font-size: 18px;
   padding: 10px;
+  font-weight: 1000;
+  font-family: cursive;
 }
 .home .card h5 {
   font-size: 15px;
   font-weight: 500;
-  color: #585858;
-  margin: 0 10px;
+  color: #2e2e2e;
+  margin: 0 5px;
   padding: 0 0 20px 0px;
   margin-bottom: 10px;
   border-bottom: 1px solid #b1b1b1;
+  
 }
 .card button {
   width: 100%;
@@ -97,16 +96,17 @@ header .row img {
   cursor: pointer;
   margin-top: 15px;
   max-width: 500px;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 10px 10px;
+  border-radius: 4px;
   align-items: center;
   justify-content: end;
-  background-color: #0099ff;
+  background-color: #0087e0;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, #00000012 0px 2px 2px, #00000025 0px 4px 4px, #0261b938 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 .card button p {
   width: 60%;
-  font-weight: 500;
-  font-size: 0.8em;
+  font-weight: 600;
+  font-size: 0.84em;
   text-align: start;
   padding-left: 10px;
 }
@@ -120,7 +120,7 @@ header .row img {
 }
 .card button:hover p,
 .card button:focus p{
-  font-size: 0.7em;
+  font-size: 0.76em;
   font-weight: 700;
 }
 .card button:hover svg,
@@ -139,9 +139,11 @@ header .row img {
 }
 .notex p {
   padding: 10px;
-  font-size: 15px;
+  font-size: 16px;
   text-align: start;
   color: #141414;
+  font-family: 'Times New Roman', Times, serif;
+  font-family: cursive;
 }
 .notex svg {
   width: 35px;
@@ -600,7 +602,7 @@ header .row img {
 }
 .imgfile .img img[src="#"] {
   padding: 20px 20px;
-  content: url("/file.svg");
+  content: url("https://judadeveloper.github.io/registration/file.svg");
 }
 .photoimge .content:hover,
 .photoimge .content:focus,
