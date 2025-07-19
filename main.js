@@ -1243,7 +1243,7 @@ function openResetform() {
   currentTab.index = 0;
   next_Tab(0);
 }
-next_Tab(3);
+next_Tab(0);
 
 
 const submitNewdata = (btn) => {
