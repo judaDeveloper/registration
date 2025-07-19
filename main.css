@@ -157,7 +157,7 @@ header .row img {
   margin: auto;
   display: grid;
   position: absolute;
-  display: Enone;
+  display: none;
   background-color: #44677e;
 }
 .modal .forms {
