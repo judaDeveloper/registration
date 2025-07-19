@@ -12,6 +12,55 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
+
+
+/*
+let 
+let a_profid = document.getElementById("userID");
+let a_userid = document.getElementById("userID");
+
+let b_gender = document.getElementById("genda");
+let b_dob = document.getElementById("dobirth");
+let b_marital = document.getElementById("marital");
+let b_idnumber = document.getElementById("idnumber");
+let b_krapin = document.getElementById("krapin");
+
+let c_firstname = document.getElementById("fname");
+let c_secondname = document.getElementById("sname");
+let c_lastname= document.getElementById("lname");
+
+let d_phone_1 = document.getElementById("phonenum1");
+let d_phone_2= document.getElementById("altnumber");
+let d_others = [];
+let d_email = document.getElementById("email");
+
+let e_county = document.getElementById("county");
+let e_currenttown = document.getElementById("town");
+let e_subcounty = document.getElementById("subcounty");
+let e_sublocation = document.getElementById("sublocation");
+let e_curraddress = document.getElementById("physical_address");
+
+let j_status = document.getElementById("w_status");
+let j_sector = document.getElementById("w_sector");
+let j_name = document.getElementById("w_name");
+let j_tittle = document.getElementById("w_tittle");
+let j_town = document.getElementById("w_town");
+let j_p_address = document.getElementById("w_physical_location");
+let j_contact = document.getElementById("w_contact");
+
+let n_nokname = document.getElementById("nok_name");
+let n_nokrelation = document.getElementById("nok_relation");
+let n_noktown = document.getElementById("nok_town");
+let n_nokphone = document.getElementById("nok_contact");
+
+let mg_photoimge = document.getElementById("photoimge");
+let mg_nidfront = document.getElementById("nidfront");
+let mg_nidback = document.getElementById("nidback");
+let mg_kracert = document.getElementById("kracert");
+let mg_bspermit = document.getElementById("bspermit");
+
+*/
+
 let fname = document.getElementById("fname");
 let sname = document.getElementById("sname");
 let lname = document.getElementById("lname");
@@ -53,21 +102,57 @@ let nidback = document.getElementById("nidback");
 let kracert = document.getElementById("kracert");
 let bspermit = document.getElementById("bspermit");
 
+let countiesData = [];
+/*
+fetch("msadata.json")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.statusText);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    countiesData =data;
+  console.log(countiesData);
+  })
+  .catch((error) => {
+    console.error("There was a problem with the fetch operation:", error);
+  });
+*/
+
+/*
+async function fetchData() {
+  try {
+    const response = await fetch("msadata.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    const obj = JSON.parse(data);
+    console.log(obj);
+
+  } catch (error) {
+    console.error("There was an error:", error);
+  }
+}
+
+fetchData();
+*/
 
 // FORMS
-let current_form = document.querySelector(".profileform");
+let current_form = document.querySelector(".userform");
 
 // CURRENT TAB
 let currentTab = {
   index: 0,
   drods: [],
   inputs: [],
-  tabname: current_form.querySelector(".inputs h6"),
-  submit: current_form.querySelectorAll(".submtform button"),
+  tabname: current_form.querySelector(".fminputs h6"),
+  submit: current_form.querySelectorAll(".fmsubmit button"),
 };
 
 // ARRAY ELEMENTS
-let formTabs = current_form.querySelectorAll(".inputs section");
+let formTabs = current_form.querySelectorAll(".fminputs section");
 let dtbutons = current_form.querySelectorAll("input.dt");
 let forminputs = current_form.querySelectorAll(".nput");
 let dropdowns = current_form.querySelectorAll(".drodown");
@@ -398,14 +483,14 @@ const next_Tab = (step) => {
   });
   current_tab = tabs[index];
   current_tab.classList.add("shown");
+  let btnpr = document.getElementById("btnprevius");
+  let btnsub = document.getElementById("btnsubmt");
+  btnpr.classList.add("shown");
+  btnsub.innerText = "NEXT";
 
-  let btn0 = document.getElementById("btnprevius");
-  let btn1 = document.getElementById("btnsubmt");
-  btn0.classList.add("shown");
-  btn1.innerText = "NEXT";
-  if (index <= 0) { btn0.classList.remove("shown"); }
-  if (index == 4) { btn1.innerText = "SUBMIT"; }
-  currentTab.inputs = current_tab.querySelectorAll(".nput");
+  if (index <= 0) { btnpr.classList.remove("shown"); }
+  if (index == 4) { btnsub.innerText = "SUBMIT"; }
+  currentTab.fminputs = current_tab.querySelectorAll(".nput");
 
   let files = [photoimge];
   let imgs = current_tab.querySelectorAll(".img .nput");
@@ -536,7 +621,7 @@ function loadDates() {
 }
 
 function setnewPosition(par) {
-  let inputs = current_form.querySelector(".inputs");
+  let inputs = current_form.querySelector(".fminputs");
   let grndparent = current_input.closest(".lb");
   let H = inputs.offsetTop + inputs.clientHeight;
   //grandparent
@@ -839,9 +924,7 @@ function fetchnewData() {
 }
 
 
-// DROPDOWNS INPUTS ========================================================
-
-
+// DROPDOWNS INPUTS 
 //Close Dropdowns
 window.addEventListener("mouseup", function (e) {
   let tagElem = e.target;
@@ -852,7 +935,6 @@ window.addEventListener("mouseup", function (e) {
     });
   }
 });
-
 
 // DATA LISTS FILTERS
 let sublocations = {
@@ -917,8 +999,8 @@ const dataListfunnel = (nput) => {
     array = ["Mombasa", "Nairobi", "Kisumu"];
 
   } else if (ntext == "subcounties") {
-      array = Object.keys(sublocations);
-     if (county.value == "Nairobi") {
+    array = Object.keys(sublocations);
+    if (county.value == "Nairobi") {
       array = [
         "Dagoretti North",
         "Dagoretti South",
@@ -942,7 +1024,7 @@ const dataListfunnel = (nput) => {
 
   } else if (ntext == "sublocations") {
     array = filtered(sublocations, [subcounty.value]);
-   
+
   } else if (ntext == "sectors") {
     array = careerSectors;
 
@@ -994,7 +1076,7 @@ const dropdownSearch = (nput) => {
     current_drpdown.querySelector("ul").replaceChildren(rf);
     setnewPosition(current_input.parentElement);
     current_drpdown.style.display = "grid";
-  }else {
+  } else {
     current_drpdown.style.display = "none";
   }
 };
@@ -1067,20 +1149,18 @@ dropdownInputs.forEach((nput) => {
 });
 
 
-//((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))
-
 
 forminputs.forEach((nput) => {
   nput.addEventListener("input", (e) => {
     formater(nput);
   });
   nput.addEventListener("blur", (e) => {
-  fetchnewData();
+    fetchnewData();
   });
 });
 
 
-//CREATE USER-ID  ===================================================================
+//CREATE USER-ID 
 let arrdocIDs = [];
 const fetchdocIDs = () => {
   db.collection("Usersdbcc").where("cid", "!=", "")
@@ -1103,8 +1183,8 @@ const createnew_id = () => {
   if (
     random.toString().length !== 6 ||
     ids.includes(random) == true) {
-      createnew_id();
-      return;
+    createnew_id();
+    return;
   };
   return random.toString();
 };
@@ -1123,7 +1203,7 @@ const createDocid = () => {
   if (userdocid.value == "") return;
   db.collection("Usersdbcc")
     .doc(userdocid.value.toString())
-    .set({ a_docid: userdocid.value.toString()});
+    .set({ a_docid: userdocid.value.toString() });
 }
 
 
@@ -1139,7 +1219,6 @@ const fetchDocumentChanges = () => {
       sessionStorage.removeItem(doc.id.toString());
     });
 };
-// ===================================================================
 
 function openResetform() {
   current_form.querySelector("form").reset();
@@ -1163,20 +1242,20 @@ function openResetform() {
   document.querySelector(".modal").style.display = "grid";
   currentTab.index = 0;
   next_Tab(0);
-} 
-next_Tab(0);
+}
+next_Tab(3);
 
 
 const submitNewdata = (btn) => {
   let n_valid = [];
   btn.disabled = false;
 
-  currentTab.inputs.forEach((nput) => {
+  currentTab.fminputs.forEach((nput) => {
     let x = formater(nput);
-    if (x) { n_valid.push(x);}
+    if (x) { n_valid.push(x); }
   });
   currentTab.inputfiles.forEach((file) => {
-    if (file == bspermit || file == kracert ) return;
+    if (file == bspermit || file == kracert) return;
     if (!file.dataset.url) { n_valid.push(file); }
   });
 
@@ -1208,4 +1287,3 @@ const submitNewdata = (btn) => {
     next_Tab(1);
   }
 };
-
