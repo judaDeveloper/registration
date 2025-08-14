@@ -514,8 +514,8 @@ const CalculatorAge = (dt) => {
 
 // RESIZE UPLOADED FILES
 const resizeImages = (nput) => {
-  let maxWidth = 300;
-  let maxHeight = 300;
+  let maxWidth = 800;
+  let maxHeight = 800;
   let file = nput.files[0];
   if (!file) return;
 
@@ -1293,3 +1293,4 @@ const submitNewdata = (btn) => {
     next_Tab(1);
   }
 };
+
